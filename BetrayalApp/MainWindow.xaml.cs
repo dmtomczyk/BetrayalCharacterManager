@@ -45,6 +45,9 @@ namespace BetrayalApp
             EditMode = false;
             AddMode = false;
 
+            // Defaults
+            AtLeastOneCharacter = false;
+
             // Setting Combobox Integers
             ValidValuesForCharacters = new ObservableCollection<int>();
             for (int i = 0; i < 11; i++)
@@ -60,6 +63,23 @@ namespace BetrayalApp
 
         #region Member Properties
 
+        private bool _atLeastOneCharacter;
+        /// <summary>
+        /// Stores whether or not at least one character exists.
+        /// </summary>
+        public bool AtLeastOneCharacter
+        {
+            get => _atLeastOneCharacter;
+            set
+            {
+                if (value != _atLeastOneCharacter)
+                {
+                    this._atLeastOneCharacter = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         private Character _selectedCharacter;
         /// <summary>
         /// Stores the currently selected character within the ListBox.
@@ -72,6 +92,23 @@ namespace BetrayalApp
                 if (value != _selectedCharacter)
                 {
                     this._selectedCharacter = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private Character _editingCharacter;
+        /// <summary>
+        /// Stores the old values for the character being edited to allow us to get an accurate index.
+        /// </summary>
+        public Character EditingCharacter
+        {
+            get => _editingCharacter;
+            set
+            {
+                if (value != _editingCharacter)
+                {
+                    this._editingCharacter = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -213,7 +250,8 @@ namespace BetrayalApp
         /// </summary>
         private void SetupEditMode()
         {
-            // TODO: 
+            EditingCharacter = new Character();
+            EditingCharacter = SelectedCharacter;   // Pass by value or reference?
         }
 
         /// <summary>
@@ -229,20 +267,52 @@ namespace BetrayalApp
         /// <br/>-> If any of the names match, we don't add the new character!.
         /// </summary>
         /// <returns></returns>
-        private bool NewCharHasCleanName()
+        private bool CharHasUniqueName()
         {
             bool cleanName = true;
+            int index = AllCharacters.IndexOf(EditingCharacter);
 
-            // Ensuring unique name
-            foreach (Character character in AllCharacters)
+            for (int i = 0; i < AllCharacters.Count; i++)
             {
-                if (character.Name.ToLower() == SelectedCharacter.Name.ToLower())
+                if (i == index)
+                    continue;
+                else
                 {
-                    cleanName = false;
+                    if (AllCharacters[i].Name.ToLower() == SelectedCharacter.Name.ToLower())
+                    {
+                        cleanName = false;
+                    }
                 }
             }
 
             return cleanName;
+        }
+
+        /// <summary>
+        /// Updates a players information.
+        /// </summary>
+        private void UpdatePlayerInformation()
+        {
+            // Only allow saving if name is unique
+            if (CharHasUniqueName() || AllCharacters.Count == 0)
+            {
+                int index = AllCharacters.IndexOf(SelectedCharacter);
+                AllCharacters[index] = SelectedCharacter;
+                AtLeastOneCharacter = true;
+                ChangeMode("overview");
+            }
+            else
+            {
+                MessageBox.Show("Player's name must be unique!");
+            }
+        }
+
+        /// <summary>
+        /// Removes the currently selected character from AllCharacters.
+        /// </summary>
+        private void RemovePlayer()
+        {
+            AllCharacters.Remove(SelectedCharacter);
         }
 
         #region Button Click Events
@@ -285,9 +355,10 @@ namespace BetrayalApp
         private void SaveNewPlayer_Click(object sender, RoutedEventArgs e)
         {
 
-            if (NewCharHasCleanName())
+            if (CharHasUniqueName() || AllCharacters.Count == 0)
             {
                 AllCharacters.Add(SelectedCharacter);
+                AtLeastOneCharacter = true;
                 ChangeMode("overview");
             }
             else
@@ -295,6 +366,26 @@ namespace BetrayalApp
                 MessageBox.Show("Player's name must be unique!");
             }
 
+        }
+
+        /// <summary>
+        /// Event handler for updating an existing player click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdatePlayer_Click(object sender, RoutedEventArgs e)
+        {
+            UpdatePlayerInformation();
+        }
+
+        /// <summary>
+        /// Handles the remove player click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemovePlayer_Click(object sender, RoutedEventArgs e)
+        {
+            RemovePlayer();
         }
 
         #endregion // End of Button Click Events
