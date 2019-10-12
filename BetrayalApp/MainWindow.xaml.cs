@@ -224,6 +224,27 @@ namespace BetrayalApp
             // TODO: 
         }
 
+        /// <summary>
+        /// Checks if the <see cref="SelectedCharacter"/> Name matches any names in <see cref="AllCharacters"/>.
+        /// <br/>-> If any of the names match, we don't add the new character!.
+        /// </summary>
+        /// <returns></returns>
+        private bool NewCharHasCleanName()
+        {
+            bool cleanName = true;
+
+            // Ensuring unique name
+            foreach (Character character in AllCharacters)
+            {
+                if (character.Name.ToLower() == SelectedCharacter.Name.ToLower())
+                {
+                    cleanName = false;
+                }
+            }
+
+            return cleanName;
+        }
+
         #region Button Click Events
 
         /// <summary>
@@ -274,27 +295,6 @@ namespace BetrayalApp
                 MessageBox.Show("Player's name must be unique!");
             }
 
-        }
-        
-        /// <summary>
-        /// Checks if the <see cref="SelectedCharacter"/> Name matches any names in <see cref="AllCharacters"/>.
-        /// <br/>-> If any of the names match, we don't add the new character!.
-        /// </summary>
-        /// <returns></returns>
-        private bool NewCharHasCleanName()
-        {
-            bool cleanName = true;
-
-            // Ensuring unique name
-            foreach (Character character in AllCharacters)
-            {
-                if (character.Name.ToLower() == SelectedCharacter.Name.ToLower())
-                {
-                    cleanName = false;
-                }
-            }
-
-            return cleanName;
         }
 
         #endregion // End of Button Click Events

@@ -14,6 +14,10 @@
             <converters:BoolToVisibilityConverter
                 x:Key="BoolToVisibilityConverter" />
 
+
+            <converters:ValueToBoolConverter
+                x:Key="ValueToBoolConverter" />
+
         </ResourceDictionary>
     </Application.Resources>
     

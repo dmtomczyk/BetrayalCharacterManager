@@ -50,11 +50,13 @@
                 VerticalAlignment="Center" />
             <Button
                 Content="Edit"
+                IsEnabled="{Binding SelectedCharacter, Converter={StaticResource ValueToBoolConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 Click="EditCharacter_Click"
                 Margin="10 10"
                 Width="50"
                 VerticalAlignment="Center" />
             <Button
+                IsEnabled="{Binding AtLeastOneCharacter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Content="Overview"
                 Click="ViewOverview_Click"
                 Margin="10 10"
