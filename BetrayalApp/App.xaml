@@ -11,9 +11,11 @@
             <converters:NullToVisibilityConverter
                 x:Key="NullToVisibilityConverter" />
 
+            <converters:NullToInverseVisibilityConverter
+                x:Key="NullToInverseVisibilityConverter" />
+
             <converters:BoolToVisibilityConverter
                 x:Key="BoolToVisibilityConverter" />
-
 
             <converters:ValueToBoolConverter
                 x:Key="ValueToBoolConverter" />
