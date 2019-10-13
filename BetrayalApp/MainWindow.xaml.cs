@@ -213,21 +213,12 @@ namespace BetrayalApp
             switch (newMode)
             {
                 case "add":
-                    EditMode = false;
-                    OverviewMode = false;
-                    AddMode = true;
                     SetupAddMode();
                     break;
                 case "edit":
-                    OverviewMode = false;
-                    AddMode = false;
-                    EditMode = true;
                     SetupEditMode();
                     break;
                 case "overview":
-                    EditMode = false;
-                    AddMode = false;
-                    OverviewMode = true;
                     SetupOverviewMode();
                     break;
                 default:
@@ -241,6 +232,10 @@ namespace BetrayalApp
         /// </summary>
         private void SetupAddMode()
         {
+            EditMode = false;
+            OverviewMode = false;
+            AddMode = true;
+
             SelectedCharacter = new Character();
             SelectedCharacter.CheckForValidValues();
         }
@@ -250,6 +245,10 @@ namespace BetrayalApp
         /// </summary>
         private void SetupEditMode()
         {
+            OverviewMode = false;
+            AddMode = false;
+            EditMode = true;
+
             EditingCharacter = new Character();
             EditingCharacter = SelectedCharacter;   // Pass by value or reference?
         }
@@ -259,7 +258,9 @@ namespace BetrayalApp
         /// </summary>
         private void SetupOverviewMode()
         {
-            // TODO: 
+            EditMode = false;
+            AddMode = false;
+            OverviewMode = true;
         }
 
         /// <summary>
@@ -274,6 +275,7 @@ namespace BetrayalApp
 
             for (int i = 0; i < AllCharacters.Count; i++)
             {
+                // Don't need to check the current players name against itself!
                 if (i == index)
                     continue;
                 else
@@ -536,6 +538,27 @@ namespace BetrayalApp
                     this._knowledge = value;
                     NotifyPropertyChanged();
                     CheckForValidValues();
+                }
+            }
+        }
+
+        private bool _isTraitor;
+        /// <summary>
+        /// Stores the characters IsTraitor value
+        /// </summary>
+        public bool IsTraitor
+        {
+            get
+            {
+                //CheckForValidValues();
+                return _isTraitor;
+            }
+            set
+            {
+                if (value != _isTraitor)
+                {
+                    this._isTraitor = value;
+                    NotifyPropertyChanged();
                 }
             }
         }

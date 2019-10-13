@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converters\NullToInverseVisibilityConverter.cs" />
+    <Compile Include="Converters\IsTraitorConverter.cs" />
     <Compile Include="Converters\ValueToBoolConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />

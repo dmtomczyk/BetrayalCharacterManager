@@ -14,6 +14,9 @@
             <converters:NullToInverseVisibilityConverter
                 x:Key="NullToInverseVisibilityConverter" />
 
+            <converters:IsTraitorConverter
+                x:Key="IsTraitorConverter" />
+            
             <converters:BoolToVisibilityConverter
                 x:Key="BoolToVisibilityConverter" />
 
