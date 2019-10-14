@@ -7,11 +7,13 @@
     xmlns:local="clr-namespace:BetrayalApp.Views"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800">
+    <!--DataContext="{Binding AddViewModel, Source={StaticResource ViewModelLocator}}">-->
     <!-- NOTE: Setting this dataContext was conflicting with the VM and resulting in the NullToInverseConverter
         not being invoked correctly from MainWindow.xaml -->
     <!--DataContext="{Binding Source={x:Type local:EditView}}"-->
 
     <!--Visibility="{Binding AddMode, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='add', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">-->
+    
     <Grid
         Background="WhiteSmoke">
         
@@ -137,6 +139,7 @@
 
         <!-- Save Player Button -->
         <Button
+            DataContext="{Binding AddViewModel, Source={StaticResource ViewModelLocator}}"
             IsEnabled="{Binding SelectedCharacter.AreValuesValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Command="{Binding SavePlayerCommand}"
             Content="Save New Player"

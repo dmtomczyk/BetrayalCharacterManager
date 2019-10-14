@@ -145,18 +145,30 @@
             Grid.Column="1"
             Grid.ColumnSpan="4">
 
-            <!-- AddMode Grid -->
-            <!-- Binding the view to the instance of AddViewModel stored in MainViewModel -->
-            <views:AddView
-                Visibility="{Binding AddVMInstance, 
+            <!-- Add Character Grid -->
+            <UserControl 
+                Visibility="{Binding Path=AddVMInstance,
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
+                ConverterParameter='AddVMInstance',
                 Mode=TwoWay, 
-                UpdateSourceTrigger=PropertyChanged}" />
+                UpdateSourceTrigger=PropertyChanged}">
+                
+                <views:AddView />
+                
+            </UserControl>
+            <!-- This only works when the DataContext of the view is not set explicitly -->
+            <!--<views:AddView
+                Visibility="{Binding AddVMInstance,
+                Converter={StaticResource NullToInverseVisibilityConverter}, 
+                ConverterParameter='AddVMInstance',
+                Mode=TwoWay, 
+                UpdateSourceTrigger=PropertyChanged}" />-->
 
             <!-- EditMode Grid -->
-            <views:EditView 
+            <views:EditView
                 Visibility="{Binding EditVMInstance, 
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
+                ConverterParameter='EditVMInstance',
                 Mode=TwoWay, 
                 UpdateSourceTrigger=PropertyChanged}" />
                 <!--DataContext="{Binding EditViewModel}"-->
@@ -165,6 +177,7 @@
             <views:OverviewView
                 Visibility="{Binding OverviewVMInstance, 
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
+                ConverterParameter='OverviewVMInstance',
                 Mode=TwoWay, 
                 UpdateSourceTrigger=PropertyChanged}" />
 

@@ -48,13 +48,13 @@ namespace BetrayalApp.ViewModels
             }
         }
 
-        //public EditViewModel EditViewModel
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<EditViewModel>();
-        //    }
-        //}
+        public AddViewModel AddViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddViewModel>();
+            }
+        }
 
         public static void Cleanup()
         {

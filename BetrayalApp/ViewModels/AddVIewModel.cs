@@ -6,6 +6,7 @@ namespace BetrayalApp.ViewModels
 {
     /// <summary>
     /// AddViewModel (VM for AddView.xaml)
+    /// <para>Each </para>
     /// </summary>
     public class AddViewModel : ViewModelBase
     {
@@ -18,7 +19,15 @@ namespace BetrayalApp.ViewModels
 
         #region Member Properties
 
-        public string TempTest { get; set; }
+        private bool _isVisible;
+        /// <summary>
+        /// Tracks whether the VM is visible to the user.
+        /// </summary>
+        public bool IsVisible
+        {
+            get => _isVisible;
+            set => Set(ref _isVisible, value);
+        }
 
         #endregion // End of Member Properties 
 

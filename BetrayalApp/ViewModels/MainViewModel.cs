@@ -169,8 +169,10 @@ namespace BetrayalApp.ViewModels
         public ICommand AddCharacterCommand => new RelayCommand(() =>
         {
             CleanUpViewModels();
+            //AddVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<AddViewModel>();
+            AddVMInstance = new AddViewModel();
+            AddVMInstance.IsVisible = true;
             ChangeMode("add");
-            AddVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<AddViewModel>();
         });
 
         /// <summary>
@@ -240,6 +242,9 @@ namespace BetrayalApp.ViewModels
 
             if (AddVMInstance != null)
                 AddVMInstance = null;
+
+            if (OverviewVMInstance != null)
+                OverviewVMInstance = null;
         }
 
         /// <summary>
