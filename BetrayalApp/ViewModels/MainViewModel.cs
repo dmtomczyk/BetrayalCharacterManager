@@ -153,6 +153,7 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         public ICommand EditCharacterCommand => new RelayCommand(() =>
         {
+            CleanUpViewModels();
             ChangeMode("edit");
         });
 
