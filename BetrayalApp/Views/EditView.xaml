@@ -5,9 +5,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:BetrayalApp.Views"
-    DataContext="{Binding Source={x:Type local:EditView}}"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800">
+    <!-- NOTE: Setting this dataContext was conflicting with the VM and resulting in the NullToInverseConverter
+        not being invoked correctly from MainWindow.xaml -->
+    <!--DataContext="{Binding Source={x:Type local:EditView}}"-->
 
     <!-- EditMode Grid -->
     <!--Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->

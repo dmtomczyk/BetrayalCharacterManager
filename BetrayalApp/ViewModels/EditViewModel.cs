@@ -18,6 +18,8 @@ namespace BetrayalApp.ViewModels
 
         #region Member Properties
 
+        public string TempTest { get; set; }
+
         #endregion // End of Member Properties 
 
         #region Commands

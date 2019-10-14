@@ -43,7 +43,8 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         public ICommand ShowEditPlayerCommand => new RelayCommand(() =>
         {
-            EditViewModel = CommonServiceLocator.ServiceLocator.Current.GetInstance<EditViewModel>();
+            ChangeMode("edit");
+            EditVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<EditViewModel>();
         });
 
         /// <summary>
@@ -107,7 +108,13 @@ namespace BetrayalApp.ViewModels
 
         #region Member Properties
 
-        public EditViewModel EditViewModel { get; set; }
+        //public EditViewModel EditVMInstance { get; set; }
+        private EditViewModel _editVMInstance;
+        public EditViewModel EditVMInstance
+        {
+            get => _editVMInstance;
+            set => Set(ref _editVMInstance, value);
+        }
 
         private bool _atLeastOneCharacter;
         /// <summary>

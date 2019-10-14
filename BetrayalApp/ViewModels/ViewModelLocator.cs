@@ -45,7 +45,15 @@ namespace BetrayalApp.ViewModels
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public EditViewModel EditViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<EditViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

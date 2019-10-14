@@ -22,18 +22,9 @@ namespace BetrayalApp.Views
     {
         public EditView()
         {
+            //DataContext = this;
             InitializeComponent();
         }
 
-
-        /// <summary>
-        /// Event handler for updating an existing player click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void UpdatePlayer_Click(object sender, RoutedEventArgs e)
-        //{
-        //    UpdatePlayerInformation();
-        //}
     }
 }

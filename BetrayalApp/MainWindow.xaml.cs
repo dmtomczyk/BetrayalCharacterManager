@@ -42,6 +42,8 @@ namespace BetrayalApp
 
         public MainWindow()
         {
+            //DataContext = this;
+
             InitializeComponent();
 
             Messenger.Default.Register<NotificationMessage>(this, (NotificationMessage) =>

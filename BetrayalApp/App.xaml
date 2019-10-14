@@ -7,7 +7,9 @@
     StartupUri="MainWindow.xaml" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     d1p1:Ignorable="d" 
-    xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:BetrayalApp.Views"
+    xmlns:viewModels="clr-namespace:BetrayalApp.ViewModels">
     
   <Application.Resources>
       
@@ -34,7 +36,7 @@
             d:IsDataSource="True" 
             xmlns:vm="clr-namespace:BetrayalApp.ViewModels" />
 
-    </ResourceDictionary>
+        </ResourceDictionary>
       
   </Application.Resources>
     
