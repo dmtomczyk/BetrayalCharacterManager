@@ -37,3 +37,8 @@ ehthumbs.db
 Thumbs.db
 
 db.lock
+.suo
+.ide
+.ide-*
+bin/Debug/
+obj/Debug/
