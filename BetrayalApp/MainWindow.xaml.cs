@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BetrayalApp.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -40,281 +42,16 @@ namespace BetrayalApp
 
         public MainWindow()
         {
-            // Setting the default view to OverviewMode. Also explicitly confirming the other modes are false.
-            OverviewMode = true;
-            EditMode = false;
-            AddMode = false;
-
-            // Defaults
-            AtLeastOneCharacter = false;
-
-            // Setting Combobox Integers
-            ValidValuesForCharacters = new ObservableCollection<int>();
-            for (int i = 0; i < 11; i++)
-            {
-                ValidValuesForCharacters.Add(i); 
-            }
-
-            // Initializing AllCharacters O.C.
-            AllCharacters = new ObservableCollection<Character>();
-
             InitializeComponent();
-        }
 
-        #region Member Properties
-
-        private bool _atLeastOneCharacter;
-        /// <summary>
-        /// Stores whether or not at least one character exists.
-        /// </summary>
-        public bool AtLeastOneCharacter
-        {
-            get => _atLeastOneCharacter;
-            set
+            Messenger.Default.Register<NotificationMessage>(this, (NotificationMessage) =>
             {
-                if (value != _atLeastOneCharacter)
+                if (DataContext is MainViewModel mvm)
                 {
-                    this._atLeastOneCharacter = value;
-                    NotifyPropertyChanged();
+
                 }
-            }
-        }
+            });
 
-        private Character _selectedCharacter;
-        /// <summary>
-        /// Stores the currently selected character within the ListBox.
-        /// </summary>
-        public Character SelectedCharacter
-        {
-            get => _selectedCharacter;
-            set
-            {
-                if (value != _selectedCharacter)
-                {
-                    this._selectedCharacter = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private Character _editingCharacter;
-        /// <summary>
-        /// Stores the old values for the character being edited to allow us to get an accurate index.
-        /// </summary>
-        public Character EditingCharacter
-        {
-            get => _editingCharacter;
-            set
-            {
-                if (value != _editingCharacter)
-                {
-                    this._editingCharacter = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservableCollection<Character> _allCharacters;
-        /// <summary>
-        /// Stores all valid characters in the ListBox.
-        /// </summary>
-        public ObservableCollection<Character> AllCharacters
-        {
-            get => _allCharacters;
-            set
-            {
-                if (value != _allCharacters)
-                {
-                    this._allCharacters = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservableCollection<int> _validValuesForCharacters;
-        /// <summary>
-        /// Stores all valid values for character values (1-10)
-        /// </summary>
-        public ObservableCollection<int> ValidValuesForCharacters
-        {
-            get => _validValuesForCharacters;
-            set
-            {
-                if (value != _validValuesForCharacters)
-                {
-                    this._validValuesForCharacters = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private bool _addMode;
-        /// <summary>
-        /// Stores whether or not AddMode is true;
-        /// </summary>
-        public bool AddMode
-        {
-            get => _addMode;
-            set
-            {
-                if (value != _addMode)
-                {
-                    this._addMode = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private bool _editMode;
-        /// <summary>
-        /// Stores whether or not EditMode is true;
-        /// </summary>
-        public bool EditMode
-        {
-            get => _editMode;
-            set
-            {
-                if (value != _editMode)
-                {
-                    this._editMode = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private bool _overviewMode;
-        /// <summary>
-        /// Stores whether or not OverviewMode is true;
-        /// </summary>
-        public bool OverviewMode
-        {
-            get => _overviewMode;
-            set
-            {
-                if (value != _overviewMode)
-                {
-                    this._overviewMode = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        #endregion // End of Member Properties
-
-        /// <summary>
-        /// This method ensures that only one mode is active at one time by handling all mode changes..
-        /// <para>
-        /// Accepts "add", "edit", and "overview"
-        /// </para>
-        /// </summary>
-        /// <param name="newMode"></param>
-        private void ChangeMode(string newMode)
-        {
-            switch (newMode)
-            {
-                case "add":
-                    SetupAddMode();
-                    break;
-                case "edit":
-                    SetupEditMode();
-                    break;
-                case "overview":
-                    SetupOverviewMode();
-                    break;
-                default:
-                    break;
-
-            }
-        }
-
-        /// <summary>
-        /// Sets all required params, etc. to initiate AddMode.
-        /// </summary>
-        private void SetupAddMode()
-        {
-            EditMode = false;
-            OverviewMode = false;
-            AddMode = true;
-
-            SelectedCharacter = new Character();
-            SelectedCharacter.CheckForValidValues();
-        }
-
-        /// <summary>
-        /// Sets all required params, etc. to initiate EditMode.
-        /// </summary>
-        private void SetupEditMode()
-        {
-            OverviewMode = false;
-            AddMode = false;
-            EditMode = true;
-
-            EditingCharacter = new Character();
-            EditingCharacter = SelectedCharacter;   // Pass by value or reference?
-        }
-
-        /// <summary>
-        /// Sets all required params, etc. to initiate AddMode.
-        /// </summary>
-        private void SetupOverviewMode()
-        {
-            EditMode = false;
-            AddMode = false;
-            OverviewMode = true;
-        }
-
-        /// <summary>
-        /// Checks if the <see cref="SelectedCharacter"/> Name matches any names in <see cref="AllCharacters"/>.
-        /// <br/>-> If any of the names match, we don't add the new character!.
-        /// </summary>
-        /// <returns></returns>
-        private bool CharHasUniqueName()
-        {
-            bool cleanName = true;
-            int index = AllCharacters.IndexOf(EditingCharacter);
-
-            for (int i = 0; i < AllCharacters.Count; i++)
-            {
-                // Don't need to check the current players name against itself!
-                if (i == index)
-                    continue;
-                else
-                {
-                    if (AllCharacters[i].Name.ToLower() == SelectedCharacter.Name.ToLower())
-                    {
-                        cleanName = false;
-                    }
-                }
-            }
-
-            return cleanName;
-        }
-
-        /// <summary>
-        /// Updates a players information.
-        /// </summary>
-        private void UpdatePlayerInformation()
-        {
-            // Only allow saving if name is unique
-            if (CharHasUniqueName() || AllCharacters.Count == 0)
-            {
-                int index = AllCharacters.IndexOf(SelectedCharacter);
-                AllCharacters[index] = SelectedCharacter;
-                AtLeastOneCharacter = true;
-                ChangeMode("overview");
-            }
-            else
-            {
-                MessageBox.Show("Player's name must be unique!");
-            }
-        }
-
-        /// <summary>
-        /// Removes the currently selected character from AllCharacters.
-        /// </summary>
-        private void RemovePlayer()
-        {
-            AllCharacters.Remove(SelectedCharacter);
         }
 
         #region Button Click Events
@@ -326,7 +63,7 @@ namespace BetrayalApp
         /// <param name="e"></param>
         private void AddCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ChangeMode("add");
+            // DONE: Converted to Command in MainViewModel
         }
 
         /// <summary>
@@ -336,7 +73,7 @@ namespace BetrayalApp
         /// <param name="e"></param>
         private void EditCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ChangeMode("edit");
+            // DONE: Converted to Command in MainViewModel
         }
 
         /// <summary>
@@ -346,7 +83,7 @@ namespace BetrayalApp
         /// <param name="e"></param>
         private void ViewOverview_Click(object sender, RoutedEventArgs e)
         {
-            ChangeMode("overview");
+            // DONE: Converted to Command in MainViewModel
         }
 
         /// <summary>
@@ -356,18 +93,7 @@ namespace BetrayalApp
         /// <param name="e"></param>
         private void SaveNewPlayer_Click(object sender, RoutedEventArgs e)
         {
-
-            if (CharHasUniqueName() || AllCharacters.Count == 0)
-            {
-                AllCharacters.Add(SelectedCharacter);
-                AtLeastOneCharacter = true;
-                ChangeMode("overview");
-            }
-            else
-            {
-                MessageBox.Show("Player's name must be unique!");
-            }
-
+            // DONE: Converted to Command in MainViewModel
         }
 
         /// <summary>
@@ -377,7 +103,7 @@ namespace BetrayalApp
         /// <param name="e"></param>
         private void UpdatePlayer_Click(object sender, RoutedEventArgs e)
         {
-            UpdatePlayerInformation();
+            // DONE: Converted to Command in MainViewModel
         }
 
         /// <summary>
@@ -387,7 +113,7 @@ namespace BetrayalApp
         /// <param name="e"></param>
         private void RemovePlayer_Click(object sender, RoutedEventArgs e)
         {
-            RemovePlayer();
+            // DONE: Converted to Command in MainViewModel
         }
 
         #endregion // End of Button Click Events

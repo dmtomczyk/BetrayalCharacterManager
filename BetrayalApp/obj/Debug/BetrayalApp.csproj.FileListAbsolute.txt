@@ -32,3 +32,5 @@ C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesi
 C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignColors.pdb
 C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\obj\Debug\Views\EditView.g.cs
+C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\obj\Debug\Views\EditView.baml

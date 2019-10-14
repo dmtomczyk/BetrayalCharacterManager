@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetrayalApp"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        xmlns:views="clr-namespace:BetrayalApp.Views"
+        xmlns:viewModels="clr-namespace:BetrayalApp.ViewModels"
+        DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
         mc:Ignorable="d"
         Title="Betrayal Character Manager" Height="550" Width="1000"
         ResizeMode="CanResize"
@@ -16,7 +18,19 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
+    <!--DataContext="{Binding RelativeSource={RelativeSource Self}}"-->
 
+
+    <Window.Resources>
+        
+        <!-- Binding the ViewModels to the Views -->
+        <DataTemplate
+            DataType="{x:Type viewModels:EditViewModel}">
+            <views:EditView />
+        </DataTemplate>
+        
+    </Window.Resources>
+    
     <!-- Main Grid -->
     <Grid>
 
@@ -54,6 +68,7 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom">
             
+            <!-- Add / Edit Buttons -->
             <WrapPanel
                 HorizontalAlignment="Center">
                 <Button
@@ -64,17 +79,20 @@
                     Margin="10 10"
                     Width="Auto"
                     VerticalAlignment="Center" />
+
+                <!--IsEnabled="{Binding SelectedCharacter, Converter={StaticResource ValueToBoolConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"-->
                 <Button
                     Content="Edit"
                     ToolTip="Edit an existing player!"
-                    IsEnabled="{Binding SelectedCharacter, Converter={StaticResource ValueToBoolConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    Click="EditCharacter_Click"
+                    Command="{Binding ShowEditPlayerCommand}"
                     Margin="10 10"
                     FontSize="15"
                     Width="Auto"
                     VerticalAlignment="Center" />
+                    <!--Click="EditCharacter_Click"-->
             </WrapPanel>
 
+            <!-- Remove / Overview Buttons -->
             <WrapPanel
                 HorizontalAlignment="Center">
                 <Button
@@ -263,159 +281,8 @@
             </Grid>
 
             <!-- EditMode Grid -->
-            <Grid
-                Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="150"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130"/>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- GRID TITLE -->
-                <TextBlock
-                    FontWeight="UltraBold"
-                    FontSize="30"
-                    Text="YOU'RE EDITING AN EXISTING CHARACTER!"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="4"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" />
-
-                <!-- New Player Details -->
-
-                <!-- Player Name -->
-                <TextBlock
-                    Text="Player Name:"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold" />
-                <TextBox
-                    ToolTip="Enter your player's name (usually your actual name :)!"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"
-                    VerticalAlignment="Center"
-                    Text="{Binding SelectedCharacter.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                <!-- Player Speed -->
-                <TextBlock
-                    Text="Player Speed:"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold" />
-                <ComboBox
-                    ToolTip="Select your players current (usually base) value!"
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    SelectedItem="{Binding SelectedCharacter.Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    ItemsSource="{Binding ValidValuesForCharacters}"/>
-
-                <!-- Player Might -->
-                <TextBlock
-                    Text="Player Might:"
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold" />
-                <ComboBox
-                    ToolTip="Select your players current (usually base) value!"
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    SelectedItem="{Binding SelectedCharacter.Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    ItemsSource="{Binding ValidValuesForCharacters}"/>
-
-                <!-- Player Knowledge -->
-                <TextBlock
-                    Text="Player Knowledge:"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold" />
-                <ComboBox
-                    ToolTip="Select your players current (usually base) value!"
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    SelectedItem="{Binding SelectedCharacter.Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    ItemsSource="{Binding ValidValuesForCharacters}"/>
-
-                <!-- Player Sanity -->
-                <TextBlock
-                    Text="Player Sanity:"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold" />
-                <ComboBox
-                    ToolTip="Select your players current (usually base) value!"
-                    Grid.Row="5"
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    SelectedItem="{Binding SelectedCharacter.Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    ItemsSource="{Binding ValidValuesForCharacters}"/>
-
-                <!-- IsTraitor Sanity -->
-                <TextBlock
-                    Text="Is Traitor?"
-                    Grid.Row="6"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold" />
-                <CheckBox
-                    ToolTip="Are you the traitor"
-                    Grid.Row="6"
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    IsChecked="{Binding SelectedCharacter.IsTraitor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                
-                <!-- Update Player Button -->
-                <Button
-                    IsEnabled="{Binding SelectedCharacter.AreValuesValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Content="Update Your Player"
-                    Click="UpdatePlayer_Click"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    Margin="5 5"
-                    Grid.Row="7"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2" />
-
-            </Grid>
+            <!-- Binding the view to the instance of EditViewModel stored in MainViewModel -->
+            <views:EditView DataContext="{Binding EditViewModel}"/>
 
             <!-- OverviewMode Grid -->
             <Grid

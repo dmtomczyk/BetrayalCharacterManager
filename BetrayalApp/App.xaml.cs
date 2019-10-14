@@ -13,5 +13,7 @@ namespace BetrayalApp
     /// </summary>
     public partial class App : Application
     {
+
+
     }
 }

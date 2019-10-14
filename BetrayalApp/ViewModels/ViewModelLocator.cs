@@ -17,7 +17,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 //using Microsoft.Practices.ServiceLocation;
 
-namespace BetrayalApp.ViewModel
+namespace BetrayalApp.ViewModels
 {
     /// <summary>
     /// This class contains static references to all the view models in the
@@ -34,10 +34,11 @@ namespace BetrayalApp.ViewModel
 
             // Registering all of the ViewModels
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<EditViewModel>();
 
         }
 
-        public MainViewModel Main
+        public MainViewModel MainViewModel
         {
             get
             {

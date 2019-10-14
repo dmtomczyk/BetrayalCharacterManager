@@ -1,0 +1,168 @@
+﻿<UserControl 
+    x:Class="BetrayalApp.Views.EditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:BetrayalApp.Views"
+    DataContext="{Binding Source={x:Type local:EditView}}"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" d:DesignWidth="800">
+
+    <!-- EditMode Grid -->
+    <!--Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- GRID TITLE -->
+        <TextBlock
+            FontWeight="UltraBold"
+            FontSize="30"
+            Text="YOU'RE EDITING AN EXISTING CHARACTER!"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
+
+        <!-- New Player Details -->
+
+        <!-- Player Name -->
+        <TextBlock
+            Text="Player Name:"
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <TextBox
+            ToolTip="Enter your player's name (usually your actual name :)!"
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            VerticalAlignment="Center"
+            Text="{Binding SelectedCharacter.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <!-- Player Speed -->
+        <TextBlock
+            Text="Player Speed:"
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <ComboBox
+            ToolTip="Select your players current (usually base) value!"
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            SelectedItem="{Binding SelectedCharacter.Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding ValidValuesForCharacters}"/>
+
+        <!-- Player Might -->
+        <TextBlock
+            Text="Player Might:"
+            Grid.Row="3"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <ComboBox
+            ToolTip="Select your players current (usually base) value!"
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            SelectedItem="{Binding SelectedCharacter.Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding ValidValuesForCharacters}"/>
+
+        <!-- Player Knowledge -->
+        <TextBlock
+            Text="Player Knowledge:"
+            Grid.Row="4"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <ComboBox
+            ToolTip="Select your players current (usually base) value!"
+            Grid.Row="4"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            SelectedItem="{Binding SelectedCharacter.Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding ValidValuesForCharacters}"/>
+
+        <!-- Player Sanity -->
+        <TextBlock
+            Text="Player Sanity:"
+            Grid.Row="5"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <ComboBox
+            ToolTip="Select your players current (usually base) value!"
+            Grid.Row="5"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            SelectedItem="{Binding SelectedCharacter.Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding ValidValuesForCharacters}"/>
+
+        <!-- IsTraitor Sanity -->
+        <TextBlock
+            Text="Is Traitor?"
+            Grid.Row="6"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <CheckBox
+            ToolTip="Are you the traitor"
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            IsChecked="{Binding SelectedCharacter.IsTraitor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- Update Player Button -->
+        <Button
+            IsEnabled="{Binding SelectedCharacter.AreValuesValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Command="{Binding UpdatePlayerCommand}"
+            Content="Update Your Player"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Margin="5 5"
+            Grid.Row="7"
+            Grid.Column="0"
+            Grid.ColumnSpan="2" />
+            <!--Click="UpdatePlayer_Click"-->
+
+    </Grid>
+
+</UserControl>

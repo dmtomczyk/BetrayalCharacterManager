@@ -13,7 +13,7 @@
       
     <ResourceDictionary>
 
-        <!-- Material Design Sources -->
+        <!-- Material Design Source -->
         <ResourceDictionary.MergedDictionaries>
             <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
             <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
@@ -30,9 +30,9 @@
         
         <!-- ViewModelLocator -->
         <vm:ViewModelLocator 
-            x:Key="Locator" 
+            x:Key="ViewModelLocator" 
             d:IsDataSource="True" 
-            xmlns:vm="clr-namespace:BetrayalApp.ViewModel" />
+            xmlns:vm="clr-namespace:BetrayalApp.ViewModels" />
     
     </ResourceDictionary>
       
