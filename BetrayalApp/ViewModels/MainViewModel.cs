@@ -171,7 +171,6 @@ namespace BetrayalApp.ViewModels
             CleanUpViewModels();
             //AddVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<AddViewModel>();
             AddVMInstance = new AddViewModel();
-            AddVMInstance.IsVisible = true;
             ChangeMode("add");
         });
 
@@ -282,8 +281,8 @@ namespace BetrayalApp.ViewModels
             OverviewMode = false;
             AddMode = true;
 
-            SelectedCharacter = new PlayerCharacter();
-            SelectedCharacter.CheckForValidValues();
+            AddVMInstance.NewCharacter = new PlayerCharacter();
+            AddVMInstance.NewCharacter.CheckForValidValues();
         }
 
         /// <summary>

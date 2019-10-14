@@ -20,175 +20,7 @@ namespace BetrayalApp.Models
         /// </summary>
         public PlayerCharacter()
         {
-            // Creating list of default characters for player to choose from.
-            DefaultCharacters = new List<DefaultCharacter>
-            {
-
-                // Missy Dubourde
-                new DefaultCharacter()
-                {
-                    DefaultName = "Missy Dubourde",
-                    DefaultAge = 9,
-                    DefaultBirthdate = "February 14",
-                    DefaultSpeed = 5,
-                    DefaultMight = 3,
-                    DefaultSaniity = 3,
-                    DefaultKnowledge = 4,
-                    SpeedIncrements = new List<int>
-                    {
-                        3, 4, 5, 6, 6, 6, 7, 7
-                    },
-                    MightIncrements = new List<int>
-                    {
-                        2, 3, 3, 3, 4, 5, 6, 7
-                    },
-                    SanityIncrements = new List<int>
-                    {
-                        1, 2, 3, 4, 5, 5, 6, 7
-                    },
-                    KnowledgeIncrements = new List<int>
-                    {
-                        2, 3, 4, 4, 5, 6, 6, 6
-                    }
-                },
-                // Zoe Ingstrom
-                new DefaultCharacter()
-                {
-                    DefaultName = "Zoe Ingstrom",
-                    DefaultAge = 8,
-                    DefaultBirthdate = "November 5",
-                    DefaultSpeed = 4,
-                    DefaultMight = 3,
-                    DefaultSaniity = 5,
-                    DefaultKnowledge = 3,
-                    SpeedIncrements = new List<int>
-                    {
-                        4, 4, 4, 4, 5, 6, 8, 8
-                    },
-                    MightIncrements = new List<int>
-                    {
-                        2, 2, 3, 3, 4, 4, 6, 7
-                    },
-                    SanityIncrements = new List<int>
-                    {
-                        3, 4, 5, 5, 6, 6, 7, 8
-                    },
-                    KnowledgeIncrements = new List<int>
-                    {
-                        1, 2, 3, 4, 4, 5, 5, 5
-                    }
-                },
-                // Heather Granville
-                new DefaultCharacter()
-                {
-                    DefaultName = "Heather Granville",
-                    DefaultAge = 18,
-                    DefaultBirthdate = "August 2",
-                    DefaultSpeed = 4,
-                    DefaultMight = 3,
-                    DefaultSaniity = 3,
-                    DefaultKnowledge = 5
-                },
-                // Jenny LeClerc
-                new DefaultCharacter()
-                {
-                    DefaultName = "Jenny LeClerc",
-                    DefaultAge = 21,
-                    DefaultBirthdate = "March 4",
-                    DefaultSpeed = 4,
-                    DefaultMight = 4,
-                    DefaultSaniity = 4,
-                    DefaultKnowledge = 3
-                },
-                // Vivian Lopez
-                new DefaultCharacter()
-                {
-                    DefaultName = "Vivian Lopez",
-                    DefaultAge = 42,
-                    DefaultBirthdate = "January 11",
-                    DefaultSpeed = 4,
-                    DefaultMight = 2,
-                    DefaultSaniity = 4,
-                    DefaultKnowledge = 5
-                },
-                // Madam Zostra
-                new DefaultCharacter()
-                {
-                    DefaultName = "Madam Zostra",
-                    DefaultAge = 37,
-                    DefaultBirthdate = "December 10",
-                    DefaultSpeed = 3,
-                    DefaultMight = 4,
-                    DefaultSaniity = 4,
-                    DefaultKnowledge = 4
-                },
-                // Darrin 'Flash' Williams
-                new DefaultCharacter()
-                {
-                    DefaultName = "Darrin 'Flash' Williams",
-                    DefaultAge = 20,
-                    DefaultBirthdate = "June 6",
-                    DefaultSpeed = 6,
-                    DefaultMight = 3,
-                    DefaultSaniity = 3,
-                    DefaultKnowledge = 3
-                },
-                // Ox Bellows
-                new DefaultCharacter()
-                {
-                    DefaultName = "Ox Bellows",
-                    DefaultAge = 20,
-                    DefaultBirthdate = "June 6",
-                    DefaultSpeed = 4,
-                    DefaultMight = 5,
-                    DefaultSaniity = 3,
-                    DefaultKnowledge = 3
-                },
-                // Peter Akimoto
-                new DefaultCharacter()
-                {
-                    DefaultName = "Peter Akimoto",
-                    DefaultAge = 13,
-                    DefaultBirthdate = "September 3",
-                    DefaultSpeed = 4,
-                    DefaultMight = 3,
-                    DefaultSaniity = 4,
-                    DefaultKnowledge = 4
-                },
-                // Brandon Jaspers
-                new DefaultCharacter()
-                {
-                    DefaultName = "Brandon Jaspers",
-                    DefaultAge = 12,
-                    DefaultBirthdate = "May 12",
-                    DefaultSpeed = 4,
-                    DefaultMight = 4,
-                    DefaultSaniity = 4,
-                    DefaultKnowledge = 3
-                },
-                // Father Rhinehart
-                new DefaultCharacter()
-                {
-                    DefaultName = "Father Rhinehart",
-                    DefaultAge = 62,
-                    DefaultBirthdate = "April 29",
-                    DefaultSpeed = 3,
-                    DefaultMight = 2,
-                    DefaultSaniity = 6,
-                    DefaultKnowledge = 4
-                },
-                // Professor Longfellow
-                new DefaultCharacter()
-                {
-                    DefaultName = "Professor Longfellow",
-                    DefaultAge = 57,
-                    DefaultBirthdate = "July 27",
-                    DefaultSpeed = 4,
-                    DefaultMight = 3,
-                    DefaultSaniity = 3,
-                    DefaultKnowledge = 5
-                }
-            };
+            
         }
 
         #region INotifyPropertyChanged Implementation
@@ -207,35 +39,18 @@ namespace BetrayalApp.Models
 
         #region Member Properties
 
-        private DefaultCharacter _selectedCharacter;
+        private DefaultCharacter _selectedBaseCharacter;
         /// <summary>
         /// Stores the players "base" character. (Deterines base and valid increments.
         /// </summary>
-        public DefaultCharacter SelectedCharacter
+        public DefaultCharacter SelectedBaseCharacter
         {
-            get => _selectedCharacter;
+            get => _selectedBaseCharacter;
             set
             {
-                if (value != _selectedCharacter)
+                if (value != _selectedBaseCharacter)
                 {
-                    this._selectedCharacter = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private List<DefaultCharacter> _defaultCharacters;
-        /// <summary>
-        /// Stores all valid Characters to serve as a base.
-        /// </summary>
-        public List<DefaultCharacter> DefaultCharacters
-        {
-            get => _defaultCharacters;
-            set
-            {
-                if (value != _defaultCharacters)
-                {
-                    this._defaultCharacters = value;
+                    this._selectedBaseCharacter = value;
                     NotifyPropertyChanged();
                 }
             }
