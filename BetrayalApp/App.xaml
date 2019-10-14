@@ -12,30 +12,38 @@
     xmlns:viewModels="clr-namespace:BetrayalApp.ViewModels"
     xmlns:utilities="clr-namespace:BetrayalApp.Utilities">
     
-  <Application.Resources>
+    <Application.Resources>
       
-    <ResourceDictionary>
+        <ResourceDictionary>
 
-        <!-- Material Design Source -->
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
-        </ResourceDictionary.MergedDictionaries>
-
-        <!-- Converters -->
-        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
-        <converters:NullToInverseVisibilityConverter x:Key="NullToInverseVisibilityConverter" />
-        <converters:IsTraitorConverter x:Key="IsTraitorConverter" />
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-        <converters:ValueToBoolConverter x:Key="ValueToBoolConverter" />
+            <!-- Converters -->
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <converters:NullToInverseVisibilityConverter x:Key="NullToInverseVisibilityConverter" />
+            <converters:IsTraitorConverter x:Key="IsTraitorConverter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:ValueToBoolConverter x:Key="ValueToBoolConverter" />
         
-        <!-- ViewModelLocator -->
-        <vm:ViewModelLocator 
-            x:Key="ViewModelLocator" 
-            d:IsDataSource="True" 
-            xmlns:vm="clr-namespace:BetrayalApp.ViewModels" />
+            <!-- ViewModelLocator -->
+            <vm:ViewModelLocator 
+                x:Key="ViewModelLocator" 
+                d:IsDataSource="True" 
+                xmlns:vm="clr-namespace:BetrayalApp.ViewModels" />
+            
+            <!-- PlayerName Style (Overview.xaml) -->
+            <Style x:Key="PlayerNameStyle" TargetType="TextBlock">
+                <Setter Property="Margin" Value="0 3" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Style>
+
+            <!-- Material Design Source -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
       
