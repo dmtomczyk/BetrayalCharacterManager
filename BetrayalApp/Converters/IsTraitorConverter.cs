@@ -21,6 +21,7 @@ namespace BetrayalApp.Converters
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            // Ensuring the value is a boolean, and that it is true. (AKA if the character is a traitor)
             if (value is bool b && b)
                 return "Red";
             return "Green";
