@@ -58,6 +58,66 @@ namespace BetrayalApp.DesignData
                 Sanity = 5,
                 AreValuesValid = true
             });
+
+            // Adding Player 2
+            AllCharacters.Add(new PlayerCharacter()
+            {
+                IsTraitor = false,
+                Name = "Player 2",
+                Knowledge = 5,
+                Might = 5,
+                Speed = 5,
+                Sanity = 5,
+                AreValuesValid = true
+            });
+
+            // Adding Player 
+            AllCharacters.Add(new PlayerCharacter()
+            {
+                IsTraitor = false,
+                Name = "Player 3",
+                Knowledge = 5,
+                Might = 5,
+                Speed = 5,
+                Sanity = 5,
+                AreValuesValid = true
+            });
+
+            // Adding Player 
+            AllCharacters.Add(new PlayerCharacter()
+            {
+                IsTraitor = false,
+                Name = "Player 4",
+                Knowledge = 5,
+                Might = 5,
+                Speed = 5,
+                Sanity = 5,
+                AreValuesValid = true
+            });
+
+            // Adding Player 
+            AllCharacters.Add(new PlayerCharacter()
+            {
+                IsTraitor = false,
+                Name = "Player 5",
+                Knowledge = 5,
+                Might = 5,
+                Speed = 5,
+                Sanity = 5,
+                AreValuesValid = true
+            });
+
+            // Adding Player 
+            AllCharacters.Add(new PlayerCharacter()
+            {
+                IsTraitor = false,
+                Name = "Player 6",
+                Knowledge = 5,
+                Might = 5,
+                Speed = 5,
+                Sanity = 5,
+                AreValuesValid = true
+            });
         }
 
     }

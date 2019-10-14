@@ -21,11 +21,11 @@
     <!-- OverviewMode Grid -->
     <Grid
         Background="White">
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -58,77 +58,60 @@
                 Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Text="{Binding AllCharacters[0].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <!-- P1 Values (Speed / Might) -->
+            <!-- P1 Values (Speed) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Speed -->
                 <TextBlock
-                    Margin="5 2"
-                    
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Speed: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[0].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            
             </WrapPanel>
 
+            <!-- P1 Values (Might) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Might -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Might: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[0].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 
+            <!-- P1 Values (Knowledge) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                
+                <!-- Knowledge -->
+                <TextBlock
+                    Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Knowledge: "/>
+                <TextBlock
+                    Text="{Binding AllCharacters[0].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            
+            </WrapPanel>
+
+            <!-- P1 Values (Sanity) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Sanity -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Sanity: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[0].Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            </WrapPanel>
-
-            <WrapPanel
-                HorizontalAlignment="Center"
-                Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                <!-- Knowledge -->
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                    Text="Knowledge: "/>
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Text="{Binding AllCharacters[0].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            
             </WrapPanel>
 
         </StackPanel>
@@ -142,73 +125,65 @@
 
             <!-- Name -->
             <TextBlock
-                FontSize="30"
+                Background="{Binding AllCharacters[1].IsTraitor, Converter={StaticResource IsTraitorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Text="{Binding AllCharacters[1].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <!-- P1 Values (Speed / Might) -->
+            <!-- P2 Values (Speed) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Speed -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Speed: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[1].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P2 Values (Might) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Might -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Might: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[1].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 
+            <!-- P2 Values (Knowledge) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <!-- Knowledge -->
+                <TextBlock
+                    Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Knowledge: "/>
+                <TextBlock
+                    Text="{Binding AllCharacters[1].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P2 Values (Sanity) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Sanity -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Sanity: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[1].Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <!-- Knowledge -->
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[1], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                    Text="Knowledge: "/>
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Text="{Binding AllCharacters[1].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </WrapPanel>
 
         </StackPanel>
@@ -222,313 +197,281 @@
 
             <!-- Name -->
             <TextBlock
-                FontSize="30"
+                Background="{Binding AllCharacters[2].IsTraitor, Converter={StaticResource IsTraitorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Text="{Binding AllCharacters[2].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <!-- P1 Values (Speed / Might) -->
+            <!-- P3 Values (Speed) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Speed -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Speed: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[2].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P3 Values (Might) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Might -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Might: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[2].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 
+            <!-- P3 Values (Knowledge) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <!-- Knowledge -->
+                <TextBlock
+                    Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Knowledge: "/>
+                <TextBlock
+                    Text="{Binding AllCharacters[2].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P3 Values (Sanity) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Sanity -->
                 <TextBlock
-                    Margin="5 2"
-                    
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Sanity: "/>
                 <TextBlock
-                    Margin="5 2"
-                    
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[2].Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <!-- Knowledge -->
-                <TextBlock
-                    Margin="5 2"
-                    
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[2], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                    Text="Knowledge: "/>
-                <TextBlock
-                    Margin="5 2"
-                    
-                    HorizontalAlignment="Center"
-                    Text="{Binding AllCharacters[2].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </WrapPanel>
 
         </StackPanel>
 
         <!-- Player 4 Panel -->
         <StackPanel
-            Grid.Row="5"
+            Grid.Row="2"
             Grid.Column="0"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center">
 
             <!-- Name -->
             <TextBlock
-                FontSize="30"
+                Background="{Binding AllCharacters[3].IsTraitor, Converter={StaticResource IsTraitorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Text="{Binding AllCharacters[3].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <!-- P1 Values (Speed / Might) -->
+            <!-- P4 Values (Speed) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Speed -->
                 <TextBlock
-                    Margin="5 2"
-                    
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Speed: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[3].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P4 Values (Might) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Might -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Might: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[3].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 
+            <!-- P4 Values (Knowledge) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <!-- Knowledge -->
+                <TextBlock
+                    Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Knowledge: "/>
+                <TextBlock
+                    Text="{Binding AllCharacters[3].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P4 Values (Sanity) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Sanity -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Sanity: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[3].Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <!-- Knowledge -->
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[3], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                    Text="Knowledge: "/>
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Text="{Binding AllCharacters[3].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </WrapPanel>
 
         </StackPanel>
 
         <!-- Player 5 Panel -->
         <StackPanel
-            Grid.Row="5"
+            Grid.Row="2"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center">
 
             <!-- Name -->
             <TextBlock
-                FontSize="30"
+                Background="{Binding AllCharacters[4].IsTraitor, Converter={StaticResource IsTraitorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Text="{Binding AllCharacters[4].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <!-- P1 Values (Speed / Might) -->
+            <!-- P5 Values (Speed) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Speed -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Speed: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[4].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P5 Values (Might) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Might -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Might: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[4].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 
+            <!-- P5 Values (Knowledge) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <!-- Knowledge -->
+                <TextBlock
+                    Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Knowledge: "/>
+                <TextBlock
+                    Text="{Binding AllCharacters[4].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P5 Values (Sanity) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Sanity -->
                 <TextBlock
-                    Margin="5 2"
-                    
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Sanity: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[4].Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <!-- Knowledge -->
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[4], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                    Text="Knowledge: "/>
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Text="{Binding AllCharacters[4].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </WrapPanel>
 
         </StackPanel>
 
         <!-- Player 6 Panel -->
         <StackPanel
-            Grid.Row="5"
+            Grid.Row="2"
             Grid.Column="2"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center">
 
             <!-- Name -->
             <TextBlock
-                FontSize="30"
+                Background="{Binding AllCharacters[5].IsTraitor, Converter={StaticResource IsTraitorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Text="{Binding AllCharacters[5].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <!-- P1 Values (Speed / Might) -->
+            <!-- P6 Values (Speed) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Speed -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Speed: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[5].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P6 Values (Might) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Might -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Might: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[5].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 
+            <!-- P6 Values (Knowledge) -->
+            <WrapPanel
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <!-- Knowledge -->
+                <TextBlock
+                    Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Knowledge: "/>
+                <TextBlock
+                    Text="{Binding AllCharacters[5].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </WrapPanel>
+
+            <!-- P6 Values (Sanity) -->
             <WrapPanel
                 HorizontalAlignment="Center"
                 Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Sanity -->
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
                     Text="Sanity: "/>
                 <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
                     Text="{Binding AllCharacters[5].Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <!-- Knowledge -->
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[5], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                    Text="Knowledge: "/>
-                <TextBlock
-                    
-                    Margin="5 2"
-                    HorizontalAlignment="Center"
-                    Text="{Binding AllCharacters[5].Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </WrapPanel>
 
         </StackPanel>
