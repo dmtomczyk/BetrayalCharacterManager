@@ -36,76 +36,6 @@ namespace BetrayalApp.ViewModels
             AllCharacters = new ObservableCollection<PlayerCharacter>();
         }
 
-        #region Commands
-
-        /// <summary>
-        /// This command sets up the EditPlayerView
-        /// </summary>
-        public ICommand ShowEditPlayerCommand => new RelayCommand(() =>
-        {
-            ChangeMode("edit");
-            EditVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<EditViewModel>();
-        });
-
-        /// <summary>
-        /// This command signals the start of Adding a new character.
-        /// </summary>
-        public ICommand AddCharacterCommand => new RelayCommand(() =>
-        {
-            ChangeMode("add");
-        });
-
-        /// <summary>
-        /// This command signals the start of editing an existing character.
-        /// </summary>
-        public ICommand EditCharacterCommand => new RelayCommand(() =>
-        {
-            ChangeMode("edit");
-        });
-
-        /// <summary>
-        /// This command signals the viewing of the overview
-        /// </summary>
-        public ICommand OverviewCommand => new RelayCommand(() =>
-        {
-            ChangeMode("overview");
-        });
-
-        /// <summary>
-        /// This command signals the start of saving a new player.
-        /// </summary>
-        public ICommand SavePlayerCommand => new RelayCommand(() =>
-        {
-            if (CharHasUniqueName() || AllCharacters.Count == 0)
-            {
-                AllCharacters.Add(SelectedCharacter);
-                AtLeastOneCharacter = true;
-                ChangeMode("overview");
-            }
-            else
-            {
-                MessageBox.Show("Player's name must be unique!");
-            }
-        });
-
-        /// <summary>
-        /// This command signals the start of updating an existing player.
-        /// </summary>
-        public ICommand UpdatePlayerCommand => new RelayCommand(() =>
-        {
-            UpdatePlayerInformation();
-        });
-
-        /// <summary>
-        /// This command signals the start of removing an existing player.
-        /// </summary>
-        public ICommand RemovePlayerCommand => new RelayCommand(() =>
-        {
-            RemovePlayer();
-        });
-
-        #endregion // End of Commands
-
         #region Member Properties
 
         //public EditViewModel EditVMInstance { get; set; }
@@ -198,7 +128,88 @@ namespace BetrayalApp.ViewModels
 
         #endregion // End of Member Properties
 
+        #region Commands
+
+        /// <summary>
+        /// This command sets up the EditPlayerView
+        /// </summary>
+        public ICommand ShowEditPlayerCommand => new RelayCommand(() =>
+        {
+            ChangeMode("edit");
+            EditVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<EditViewModel>();
+        });
+
+        /// <summary>
+        /// This command signals the start of Adding a new character.
+        /// </summary>
+        public ICommand AddCharacterCommand => new RelayCommand(() =>
+        {
+            CleanUpViewModels();
+            ChangeMode("add");
+        });
+
+        /// <summary>
+        /// This command signals the start of editing an existing character.
+        /// </summary>
+        public ICommand EditCharacterCommand => new RelayCommand(() =>
+        {
+            ChangeMode("edit");
+        });
+
+        /// <summary>
+        /// This command signals the viewing of the overview
+        /// </summary>
+        public ICommand OverviewCommand => new RelayCommand(() =>
+        {
+            ChangeMode("overview");
+        });
+
+        /// <summary>
+        /// This command signals the start of saving a new player.
+        /// </summary>
+        public ICommand SavePlayerCommand => new RelayCommand(() =>
+        {
+            if (CharHasUniqueName() || AllCharacters.Count == 0)
+            {
+                AllCharacters.Add(SelectedCharacter);
+                AtLeastOneCharacter = true;
+                ChangeMode("overview");
+            }
+            else
+            {
+                MessageBox.Show("Player's name must be unique!");
+            }
+        });
+
+        /// <summary>
+        /// This command signals the start of updating an existing player.
+        /// </summary>
+        public ICommand UpdatePlayerCommand => new RelayCommand(() =>
+        {
+            UpdatePlayerInformation();
+        });
+
+        /// <summary>
+        /// This command signals the start of removing an existing player.
+        /// </summary>
+        public ICommand RemovePlayerCommand => new RelayCommand(() =>
+        {
+            RemovePlayer();
+        });
+
+        #endregion // End of Commands
+
         #region Methods
+
+        /// <summary>
+        /// This method clears all ViewModel Properties declared within MainViewModel.
+        /// <para>It should be invoked BEFORE adding / creating a new VM instance to ensure it does not get removed accidentally.</para>
+        /// </summary>
+        private void CleanUpViewModels()
+        {
+            if (EditVMInstance != null)
+                EditVMInstance = null;
+        }
 
         /// <summary>
         /// This method ensures that only one mode is active at one time by handling all mode changes..

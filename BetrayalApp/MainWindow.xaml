@@ -287,7 +287,7 @@
             <!-- EditMode Grid -->
             <!-- Binding the view to the instance of EditViewModel stored in MainViewModel -->
             <views:EditView 
-                Visibility="{Binding Path=EditVMInstance, ConverterParameter='EditView UserControl', Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Visibility="{Binding EditVMInstance, Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  />
                 <!--DataContext="{Binding EditViewModel}"-->
                 <!--Template="{Binding Source={x:Type views:EditView}}"-->
