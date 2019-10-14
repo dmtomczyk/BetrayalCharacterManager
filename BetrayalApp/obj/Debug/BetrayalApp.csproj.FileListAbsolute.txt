@@ -27,3 +27,8 @@ C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\GalaSoft.Mvv
 C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
 C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\obj\Debug\BetrayalApp.csproj.CopyComplete
+C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignColors.dll
+C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Daymian\Desktop\Betrayal\BetrayalApp\BetrayalApp\bin\Debug\MaterialDesignThemes.Wpf.xml
