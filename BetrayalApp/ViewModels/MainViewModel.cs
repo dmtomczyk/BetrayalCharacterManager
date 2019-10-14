@@ -59,6 +59,16 @@ namespace BetrayalApp.ViewModels
             set => Set(ref _addVMInstance, value);
         }
 
+        private OverviewViewModel _overviewVMInstance;
+        /// <summary>
+        /// Stores one instance of OverviewViewModel that is linked to OverviewView in MainWindow.xaml.
+        /// </summary>
+        public OverviewViewModel OverviewVMInstance
+        {
+            get => _overviewVMInstance;
+            set => Set(ref _overviewVMInstance, value);
+        }
+
         private bool _atLeastOneCharacter;
         /// <summary>
         /// Stores whether or not at least one character exists.
@@ -175,9 +185,11 @@ namespace BetrayalApp.ViewModels
         /// <summary>
         /// This command signals the viewing of the overview
         /// </summary>
-        public ICommand OverviewCommand => new RelayCommand(() =>
+        public ICommand ShowOverviewCommand => new RelayCommand(() =>
         {
+            CleanUpViewModels();
             ChangeMode("overview");
+            OverviewVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<OverviewViewModel>();
         });
 
         /// <summary>

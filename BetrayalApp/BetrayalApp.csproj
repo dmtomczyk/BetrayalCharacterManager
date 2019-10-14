@@ -78,10 +78,15 @@
     </ApplicationDefinition>
     <Compile Include="Models\DefaultCharacter.cs" />
     <Compile Include="Models\PlayerCharacter.cs" />
+    <Compile Include="Utilities\WPFUtilities.cs" />
+    <Compile Include="ViewModels\OverviewViewModel.cs" />
     <Compile Include="ViewModels\AddVIewModel.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\OverviewView.xaml.cs">
+      <DependentUpon>OverviewView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddView.xaml.cs">
       <DependentUpon>AddView.xaml</DependentUpon>
     </Compile>
@@ -105,6 +110,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\OverviewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AddView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,6 +150,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BetrayalApp.DesignData\BetrayalApp.DesignData.csproj">
+      <Project>{eeebaf75-627e-497b-bdc1-654a5f486539}</Project>
+      <Name>BetrayalApp.DesignData</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

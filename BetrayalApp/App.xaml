@@ -9,7 +9,8 @@
     d1p1:Ignorable="d" 
     xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:BetrayalApp.Views"
-    xmlns:viewModels="clr-namespace:BetrayalApp.ViewModels">
+    xmlns:viewModels="clr-namespace:BetrayalApp.ViewModels"
+    xmlns:utilities="clr-namespace:BetrayalApp.Utilities">
     
   <Application.Resources>
       
