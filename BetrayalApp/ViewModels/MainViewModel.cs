@@ -1,3 +1,4 @@
+using BetrayalApp.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
@@ -32,7 +33,7 @@ namespace BetrayalApp.ViewModels
             }
 
             // Initializing AllCharacters O.C.
-            AllCharacters = new ObservableCollection<Character>();
+            AllCharacters = new ObservableCollection<PlayerCharacter>();
         }
 
         #region Commands
@@ -118,31 +119,31 @@ namespace BetrayalApp.ViewModels
             set => Set(ref _atLeastOneCharacter, value);
         }
 
-        private Character _selectedCharacter;
+        private PlayerCharacter _selectedCharacter;
         /// <summary>
         /// Stores the currently selected character within the ListBox.
         /// </summary>
-        public Character SelectedCharacter
+        public PlayerCharacter SelectedCharacter
         {
             get => _selectedCharacter;
             set => Set(ref _selectedCharacter, value);
         }
 
-        private Character _editingCharacter;
+        private PlayerCharacter _editingCharacter;
         /// <summary>
         /// Stores the old values for the character being edited to allow us to get an accurate index.
         /// </summary>
-        public Character EditingCharacter
+        public PlayerCharacter EditingCharacter
         {
             get => _editingCharacter;
             set => Set(ref _editingCharacter, value);
         }
 
-        private ObservableCollection<Character> _allCharacters;
+        private ObservableCollection<PlayerCharacter> _allCharacters;
         /// <summary>
         /// Stores all valid characters in the ListBox.
         /// </summary>
-        public ObservableCollection<Character> AllCharacters
+        public ObservableCollection<PlayerCharacter> AllCharacters
         {
             get => _allCharacters;
             set => Set(ref _allCharacters, value);
@@ -227,7 +228,7 @@ namespace BetrayalApp.ViewModels
             OverviewMode = false;
             AddMode = true;
 
-            SelectedCharacter = new Character();
+            SelectedCharacter = new PlayerCharacter();
             SelectedCharacter.CheckForValidValues();
         }
 
@@ -240,7 +241,7 @@ namespace BetrayalApp.ViewModels
             AddMode = false;
             EditMode = true;
 
-            EditingCharacter = new Character();
+            EditingCharacter = new PlayerCharacter();
             EditingCharacter = SelectedCharacter;   // Pass by value or reference?
         }
 

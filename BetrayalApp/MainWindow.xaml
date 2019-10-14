@@ -72,13 +72,14 @@
             <WrapPanel
                 HorizontalAlignment="Center">
                 <Button
+                    Command="{Binding AddCharacterCommand}"
                     Content="Add"
                     ToolTip="Add a new player to the game!"
-                    Click="AddCharacter_Click"
                     FontSize="15"
                     Margin="10 10"
                     Width="Auto"
                     VerticalAlignment="Center" />
+                    <!--Click="AddCharacter_Click"-->
 
                 <!--IsEnabled="{Binding SelectedCharacter, Converter={StaticResource ValueToBoolConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"-->
                 <Button
@@ -97,22 +98,24 @@
                 HorizontalAlignment="Center">
                 <Button
                     Content="Remove"
+                    Command="{Binding RemovePlayerCommand}"
                     ToolTip="Remove an existing player from the game!"
                     IsEnabled="{Binding SelectedCharacter, Converter={StaticResource ValueToBoolConverter}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    Click="RemovePlayer_Click"
                     Margin="10 10"
                     FontSize="15"
                     Width="Auto"
                     VerticalAlignment="Center" />
+                    <!--Click="RemovePlayer_Click"-->
                 <Button
                     ToolTip="View all current players (1-6)!"
+                    Command="{Binding OverviewCommand}"
                     IsEnabled="{Binding AtLeastOneCharacter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Content="Overview"
-                    Click="ViewOverview_Click"
                     FontSize="15"
                     Margin="10 10"
                     Width="Auto"
                     VerticalAlignment="Center" />
+                    <!--Click="ViewOverview_Click"-->
             </WrapPanel>
         </StackPanel>
         
@@ -269,20 +272,21 @@
                 <!-- Save Player Button -->
                 <Button
                     IsEnabled="{Binding SelectedCharacter.AreValuesValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Command="{Binding SavePlayerCommand}"
                     Content="Save New Player"
-                    Click="SaveNewPlayer_Click"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     Margin="5 5"
                     Grid.Row="6"
                     Grid.Column="0"
                     Grid.ColumnSpan="2" />
+                    <!--Click="SaveNewPlayer_Click"-->
 
             </Grid>
 
             <!-- EditMode Grid -->
             <!-- Binding the view to the instance of EditViewModel stored in MainViewModel -->
-            <views:EditView DataContext="{Binding EditViewModel}"/>
+            <!--<views:EditView DataContext="{Binding EditViewModel}"/>-->
 
             <!-- OverviewMode Grid -->
             <Grid

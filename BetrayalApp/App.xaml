@@ -33,7 +33,7 @@
             x:Key="ViewModelLocator" 
             d:IsDataSource="True" 
             xmlns:vm="clr-namespace:BetrayalApp.ViewModels" />
-    
+
     </ResourceDictionary>
       
   </Application.Resources>
