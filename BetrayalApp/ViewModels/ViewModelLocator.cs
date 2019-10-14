@@ -35,6 +35,7 @@ namespace BetrayalApp.ViewModels
             // Registering all of the ViewModels
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<EditViewModel>();
+            SimpleIoc.Default.Register<AddViewModel>();
 
         }
 

@@ -40,10 +40,23 @@ namespace BetrayalApp.ViewModels
 
         //public EditViewModel EditVMInstance { get; set; }
         private EditViewModel _editVMInstance;
+        /// <summary>
+        /// Stores one instance of EditViewModel that is linked to EditView in MainWindow.xaml.
+        /// </summary>
         public EditViewModel EditVMInstance
         {
             get => _editVMInstance;
             set => Set(ref _editVMInstance, value);
+        }
+
+        private AddViewModel _addVMInstance;
+        /// <summary>
+        /// Stores one instance of AddViewModel that is linked to EditView in MainWindow.xaml.
+        /// </summary>
+        public AddViewModel AddVMInstance
+        {
+            get => _addVMInstance;
+            set => Set(ref _addVMInstance, value);
         }
 
         private bool _atLeastOneCharacter;
@@ -135,6 +148,7 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         public ICommand ShowEditPlayerCommand => new RelayCommand(() =>
         {
+            CleanUpViewModels();
             ChangeMode("edit");
             EditVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<EditViewModel>();
         });
@@ -146,6 +160,7 @@ namespace BetrayalApp.ViewModels
         {
             CleanUpViewModels();
             ChangeMode("add");
+            AddVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<AddViewModel>();
         });
 
         /// <summary>
@@ -153,8 +168,8 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         public ICommand EditCharacterCommand => new RelayCommand(() =>
         {
-            CleanUpViewModels();
-            ChangeMode("edit");
+            //CleanUpViewModels();
+            //ChangeMode("edit");
         });
 
         /// <summary>
@@ -210,6 +225,9 @@ namespace BetrayalApp.ViewModels
         {
             if (EditVMInstance != null)
                 EditVMInstance = null;
+
+            if (AddVMInstance != null)
+                AddVMInstance = null;
         }
 
         /// <summary>
