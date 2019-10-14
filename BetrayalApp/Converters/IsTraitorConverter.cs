@@ -21,10 +21,17 @@ namespace BetrayalApp.Converters
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Ensuring the value is a boolean, and that it is true. (AKA if the character is a traitor)
-            if (value is bool b && b)
-                return "Red";
-            return "Green";
+            if (value is bool IsTraitor)
+            {
+                // Ensuring the value is a boolean, and that it is true. (AKA if the character is a traitor)
+                if (IsTraitor)
+                    return "Red";
+                else if (!IsTraitor)
+                    return "Green";
+            }
+
+            // Returns empty string if user has not been deemed traitor or explicitly listed as innocent
+            return "";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

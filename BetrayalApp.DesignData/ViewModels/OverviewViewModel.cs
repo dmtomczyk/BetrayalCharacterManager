@@ -50,7 +50,7 @@ namespace BetrayalApp.DesignData
             // Adding Daymian as Ox Bellows
             AllCharacters.Add(new PlayerCharacter()
             {
-                IsTraitor = false,
+                IsTraitor = true,
                 Name = "Daymian (Ox Bellows)",
                 Knowledge = 5,
                 Might = 5,
@@ -62,7 +62,7 @@ namespace BetrayalApp.DesignData
             // Adding Player 2
             AllCharacters.Add(new PlayerCharacter()
             {
-                IsTraitor = false,
+                IsTraitor = null,
                 Name = "Player 2",
                 Knowledge = 5,
                 Might = 5,

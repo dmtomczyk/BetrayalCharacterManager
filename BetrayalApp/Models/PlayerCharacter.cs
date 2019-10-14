@@ -369,11 +369,11 @@ namespace BetrayalApp.Models
             }
         }
 
-        private bool _isTraitor;
+        private bool? _isTraitor;
         /// <summary>
         /// Stores the characters IsTraitor value
         /// </summary>
-        public bool IsTraitor
+        public bool? IsTraitor
         {
             get
             {
