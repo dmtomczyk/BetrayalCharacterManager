@@ -22,8 +22,30 @@ namespace BetrayalApp.Views
     {
         public AddView()
         {
+            this.DataContext = this;
             InitializeComponent();
+
+            Dispatcher.ShutdownStarted += OnDispatcherShutDownStarted;
+
+            //Loaded += (s, e) => {
+            //    Window.GetWindow(this)
+            //        .Closing += (s1, e1) => Dispose();
+            //};
         }
 
+        private void OnDispatcherShutDownStarted(object sender, EventArgs e)
+        {
+            var Disposable = DataContext as IDisposable;
+
+            if (!(Disposable is null))
+            {
+                Disposable.Dispose();
+            }
+        }
+
+        //private void Dispose()
+        //{
+        //    // throw new NotImplementedException();
+        //}
     }
 }

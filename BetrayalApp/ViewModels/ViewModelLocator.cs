@@ -1,21 +1,6 @@
-/*
-  In App.xaml:
-  <Application.Resources>
-      <vm:ViewModelLocator xmlns:vm="clr-namespace:BetrayalApp"
-                           x:Key="Locator" />
-  </Application.Resources>
-  
-  In the View:
-  DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
-
-  You can also use Blend to do all this with the tool's support.
-  See http://www.galasoft.ch/mvvm
-*/
-
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-//using Microsoft.Practices.ServiceLocation;
 
 namespace BetrayalApp.ViewModels
 {
@@ -44,6 +29,10 @@ namespace BetrayalApp.ViewModels
         {
             get => ServiceLocator.Current.GetInstance<MainViewModel>();
         }
+        public EditViewModel EditViewModel
+        {
+            get => ServiceLocator.Current.GetInstance<EditViewModel>();
+        }
         public AddViewModel AddViewModel
         {
             get => ServiceLocator.Current.GetInstance<AddViewModel>();
@@ -52,14 +41,10 @@ namespace BetrayalApp.ViewModels
         {
             get => ServiceLocator.Current.GetInstance<OverviewViewModel>();
         }
-        public EditViewModel EditViewModel
-        {
-            get => ServiceLocator.Current.GetInstance<EditViewModel>();
-        }
 
         public static void Cleanup()
         {
-            // TODO Clear the ViewModels
+            
         }
     }
 }

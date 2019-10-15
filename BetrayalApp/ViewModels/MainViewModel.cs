@@ -139,7 +139,10 @@ namespace BetrayalApp.ViewModels
         public ICommand AddCharacterCommand => new RelayCommand(() =>
         {
             CleanUpViewModels();
-            //AddVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<AddViewModel>();
+            SelectedCharacter = null;
+            AddVMInstance = null;
+            AddVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<AddViewModel>();
+            //AddVMInstance?.Cleanup();
             AddVMInstance = new AddViewModel();
             ChangeMode("add");
         });
@@ -209,7 +212,7 @@ namespace BetrayalApp.ViewModels
                 EditVMInstance = null;
 
             if (AddVMInstance != null)
-                AddVMInstance = null;
+                AddVMInstance.Cleanup();
 
             if (OverviewVMInstance != null)
                 OverviewVMInstance = null;
@@ -246,8 +249,8 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void SetupAddMode()
         {
-            AddVMInstance.NewCharacter = new PlayerCharacter();
-            AddVMInstance.NewCharacter.CheckForValidValues();
+            //AddVMInstance.NewCharacter = new PlayerCharacter();
+            //AddVMInstance.NewCharacter.CheckForValidValues();
         }
 
         /// <summary>
@@ -255,8 +258,8 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void SetupEditMode()
         {
-            EditingCharacter = new PlayerCharacter();
-            EditingCharacter = SelectedCharacter;
+            EditVMInstance.SelectedCharacter = new PlayerCharacter();
+            EditVMInstance.SelectedCharacter = SelectedCharacter;
         }
 
         /// <summary>

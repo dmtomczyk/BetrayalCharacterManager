@@ -6,29 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:BetrayalApp.Views"
     mc:Ignorable="d" 
-    d:DesignHeight="450" d:DesignWidth="800">
+    d:DesignHeight="650" d:DesignWidth="800"
+    DataContext="{Binding EditViewModel, Source={StaticResource ViewModelLocator}}">
     <!-- NOTE: Setting this dataContext was conflicting with the VM and resulting in the NullToInverseConverter
         not being invoked correctly from MainWindow.xaml -->
     <!--DataContext="{Binding Source={x:Type local:EditView}}"-->
 
     <!-- EditMode Grid -->
     <!--Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-    <Grid>
+    <Grid Background="WhiteSmoke">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="150"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
@@ -44,8 +47,6 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center" />
 
-        <!-- New Player Details -->
-
         <!-- Player Name -->
         <TextBlock
             Text="Player Name:"
@@ -55,67 +56,65 @@
             VerticalAlignment="Center"
             FontWeight="Bold" />
         <TextBox
+            DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
             ToolTip="Enter your player's name (usually your actual name :)!"
             Grid.Row="1"
             Grid.Column="1"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Stretch"
             HorizontalContentAlignment="Center"
             VerticalAlignment="Center"
-            Text="{Binding SelectedCharacter.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            Text="{Binding SelectedCharacter.Name, UpdateSourceTrigger=PropertyChanged}" />
+
+        <!-- Base Character -->
+        <TextBlock
+            Text="Character:"
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <TextBlock
+            DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
+            ToolTip="Enter your player's name (usually your actual name :)!"
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Text="{Binding SelectedCharacter.SelectedBaseCharacter.DefaultName, UpdateSourceTrigger=PropertyChanged}" />
 
         <!-- Player Speed -->
         <TextBlock
             Text="Player Speed:"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             FontWeight="Bold" />
-        <ComboBox
-            ToolTip="Select your players current (usually base) value!"
-            Grid.Row="2"
+        <TextBlock
+            DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
+            Grid.Row="3"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            SelectedItem="{Binding SelectedCharacter.Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding ValidValuesForCharacters}"/>
+            Text="{Binding SelectedCharacter.Speed, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Player Might -->
         <TextBlock
             Text="Player Might:"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             FontWeight="Bold" />
-        <ComboBox
-            ToolTip="Select your players current (usually base) value!"
-            Grid.Row="3"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            SelectedItem="{Binding SelectedCharacter.Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding ValidValuesForCharacters}"/>
-
-        <!-- Player Knowledge -->
         <TextBlock
-            Text="Player Knowledge:"
-            Grid.Row="4"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontWeight="Bold" />
-        <ComboBox
             ToolTip="Select your players current (usually base) value!"
             Grid.Row="4"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            SelectedItem="{Binding SelectedCharacter.Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding ValidValuesForCharacters}"/>
+            Text="{Binding SelectedCharacter.Might}"/>
 
         <!-- Player Sanity -->
         <TextBlock
@@ -125,29 +124,63 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             FontWeight="Bold" />
-        <ComboBox
+        <TextBlock
             ToolTip="Select your players current (usually base) value!"
             Grid.Row="5"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            SelectedItem="{Binding SelectedCharacter.Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding ValidValuesForCharacters}"/>
+            Text="{Binding SelectedCharacter.Knowledge, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!-- IsTraitor Sanity -->
+        <!-- Player Knowledge -->
+        <TextBlock
+            Text="Player Knowledge:"
+            Grid.Row="6"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontWeight="Bold" />
+        <TextBlock
+            ToolTip="Select your players current (usually base) value!"
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Text="{Binding SelectedCharacter.Knowledge, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button
+            Grid.Row="6"
+            Grid.Column="2"
+            Content="^"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="+knowledge"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top" />
+        <Button
+            Grid.Row="6"
+            Grid.Column="2" 
+            Content="v"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="-knowledge"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"/>
+
+        <!-- IsTraitor  -->
         <TextBlock
             Text="Is Traitor?"
-            Grid.Row="6"
+            Grid.Row="7"
             Grid.Column="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             FontWeight="Bold" />
         <CheckBox
             ToolTip="Are you the traitor"
-            Grid.Row="6"
+            Grid.Row="7"
             Grid.Column="1"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Center"
             VerticalAlignment="Center"
             HorizontalContentAlignment="Center"
             IsChecked="{Binding SelectedCharacter.IsTraitor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -156,13 +189,13 @@
         <Button
             IsEnabled="{Binding SelectedCharacter.AreValuesValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Command="{Binding UpdatePlayerCommand}"
-            Content="Update Your Player"
+            Content="Complete Updates"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             Margin="5 5"
-            Grid.Row="7"
+            Grid.Row="8"
             Grid.Column="0"
-            Grid.ColumnSpan="2" />
+            Grid.ColumnSpan="3" />
             <!--Click="UpdatePlayer_Click"-->
 
     </Grid>

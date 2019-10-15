@@ -23,8 +23,26 @@ namespace BetrayalApp.Views
         public EditView()
         {
             //DataContext = this;
+            this.DataContext = this;
             InitializeComponent();
+            Dispatcher.ShutdownStarted += OnDispatcherShutDownStarted;
+        }
+
+        /// <summary>
+        /// Disposing of the datacontext
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnDispatcherShutDownStarted(object sender, EventArgs e)
+        {
+            var Disposable = DataContext as IDisposable;
+
+            if (!(Disposable is null))
+            {
+                Disposable.Dispose();
+            }
         }
 
     }
+
 }

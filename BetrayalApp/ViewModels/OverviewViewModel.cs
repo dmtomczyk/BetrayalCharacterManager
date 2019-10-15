@@ -17,11 +17,11 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         public OverviewViewModel()
         {
-            // TODO: Determine if I should store only player names in MainViewModel
-            // and store all characters only here, or just leave it as is?
-            // If I choose to implement more commands in here such as
-            //  - IncrementValueCommand, etc. then that would be the best solution
-            // as we will be not only accessing, but modifying AllCharacters values.
+            /// TODO: Determine if I should store only player names in MainViewModel
+            /// and store all characters only here, or just leave it as is?
+            /// If I choose to implement more commands in here such as
+            ///  - IncrementValueCommand, etc. then that would be the best solution
+            /// as we will be not only accessing, but modifying AllCharacters values.
             AllCharacters = MVMInstance.AllCharacters;
         }
 

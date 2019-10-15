@@ -416,16 +416,26 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void SaveNewPlayer()
         {
+            // Setting Players Current Values equal to their chosen characters base values
             NewCharacter.Speed = SelectedBaseCharacter.DefaultSpeed;
             NewCharacter.Might = SelectedBaseCharacter.DefaultMight;
             NewCharacter.Sanity = SelectedBaseCharacter.DefaultSpeed;
             NewCharacter.Knowledge = SelectedBaseCharacter.DefaultKnowledge;
 
+            // Setting this property in case we decide to use the Base Characters stats in the future
             NewCharacter.SelectedBaseCharacter = SelectedBaseCharacter;
 
+            // Adding the new player to the list of players stored in MainViewModel
             MVMInstance.AllCharacters.Add(NewCharacter);
-            MVMInstance.AddVMInstance = null;
+
+            // Setting this to true since we can guarantee there is at least one character
+            // NOTE: This property is what we use to allow the user to click the "Overview" button
             MVMInstance.AtLeastOneCharacter = true;
+            
+            // Clearing the VM to cleanup the UI
+            MVMInstance.AddVMInstance = null;
+
+            MessengerInstance.Unregister(this);
         }
 
     }

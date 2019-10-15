@@ -6,12 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:BetrayalApp.Views"
     mc:Ignorable="d" 
-    d:DesignHeight="450" d:DesignWidth="800"
-    DataContext="{Binding AddViewModel, Source={StaticResource ViewModelLocator}}">
+    d:DesignHeight="450" d:DesignWidth="800">
+    <!-- Setting the DataContext within MainWindow.xaml !!! -->
     <!-- NOTE: Setting this dataContext was conflicting with the VM and resulting in the NullToInverseConverter
         not being invoked correctly from MainWindow.xaml -->
     <!--DataContext="{Binding Source={x:Type local:EditView}}"-->
-
+    <!--DataContext="{Binding AddViewModel, Source={StaticResource ViewModelLocator}}"-->
+    
     <Grid Background="WhiteSmoke">
         
         <Grid.RowDefinitions>
@@ -78,93 +79,95 @@
             DisplayMemberPath="DefaultName"
             SelectedItem="{Binding SelectedBaseCharacter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             ItemsSource="{Binding AllBaseCharacters}"/>
-        
-        <!-- Player Speed -->
-        <TextBlock
-            Text="Player Speed:"
-            Grid.Row="3"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontWeight="Bold" />
-        <ComboBox
-            ToolTip="Select your players current (usually base) value!"
-            Grid.Row="3"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            IsEnabled="{Binding NewCharacter.SelectedBaseCharacter, Converter={StaticResource ValueToBoolConverter}, ConverterParameter='AddView SelectedBaseCharacter ComboBox', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            SelectedItem="{Binding NewCharacter.Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding SelectedBaseCharacter.SpeedIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!-- Player Might -->
-        <TextBlock
-            Text="Player Might:"
-            Grid.Row="4"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontWeight="Bold" />
-        <ComboBox
-            ToolTip="Select your players current (usually base) value!"
-            Grid.Row="4"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            SelectedItem="{Binding NewCharacter.Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding SelectedBaseCharacter.MightIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <!-- Custom Player Stats -->
+        <Grid Visibility="Collapsed">
+            <!-- Player Speed -->
+            <TextBlock
+                Text="Player Speed:"
+                Grid.Row="3"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
+            <ComboBox
+                ToolTip="Select your players current (usually base) value!"
+                Grid.Row="3"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                IsEnabled="{Binding NewCharacter.SelectedBaseCharacter, Converter={StaticResource ValueToBoolConverter}, ConverterParameter='AddView SelectedBaseCharacter ComboBox', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding NewCharacter.Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding SelectedBaseCharacter.SpeedIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!-- Player Knowledge -->
-        <TextBlock
-            Text="Player Knowledge:"
-            Grid.Row="5"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontWeight="Bold" />
-        <ComboBox
-            ToolTip="Select your players current (usually base) value!"
-            Grid.Row="5"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            SelectedItem="{Binding NewCharacter.Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding SelectedBaseCharacter.KnowledgeIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <!-- Player Might -->
+            <TextBlock
+                Text="Player Might:"
+                Grid.Row="4"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
+            <ComboBox
+                ToolTip="Select your players current (usually base) value!"
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding NewCharacter.Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding SelectedBaseCharacter.MightIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!-- Player Sanity -->
-        <TextBlock
-            Text="Player Sanity:"
-            Grid.Row="6"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontWeight="Bold" />
-        <ComboBox
-            Name="SanityBox"
-            ToolTip="Select your players current (usually base) value!"
-            Grid.Row="6"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            SelectedItem="{Binding NewCharacter.Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding SelectedBaseCharacter.SanityIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <!-- Player Knowledge -->
+            <TextBlock
+                Text="Player Knowledge:"
+                Grid.Row="5"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
+            <ComboBox
+                ToolTip="Select your players current (usually base) value!"
+                Grid.Row="5"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding NewCharacter.Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding SelectedBaseCharacter.KnowledgeIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!-- Save Player Button -->
+            <!-- Player Sanity -->
+            <TextBlock
+                Text="Player Sanity:"
+                Grid.Row="6"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
+            <ComboBox
+                Name="SanityBox"
+                ToolTip="Select your players current (usually base) value!"
+                Grid.Row="6"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding NewCharacter.Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding SelectedBaseCharacter.SanityIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <!-- Save New Player Button -->
         <Button
-            IsEnabled="{Binding NewCharacter.AreValuesValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            IsEnabled="{Binding SelectedBaseCharacter, Converter={StaticResource ValueToBoolConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Command="{Binding SavePlayerCommand}"
             Content="Save New Player"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             Margin="5 5"
-            Grid.Row="7"
+            Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="2" />
-        <!--Click="SaveNewPlayer_Click"-->
 
     </Grid>
 

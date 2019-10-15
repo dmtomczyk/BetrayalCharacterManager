@@ -8,7 +8,7 @@
         xmlns:viewModels="clr-namespace:BetrayalApp.ViewModels"
         DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
         mc:Ignorable="d"
-        Title="Betrayal Character Manager" Height="550" Width="1000"
+        Title="Betrayal Character Manager" Height="650" Width="1000"
         ResizeMode="CanResize"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -19,16 +19,6 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <!--DataContext="{Binding RelativeSource={RelativeSource Self}}"-->
-
-    <Window.Resources>
-        
-        <!-- Binding the ViewModels to the Views -->
-        <!--<DataTemplate
-            DataType="{x:Type viewModels:EditViewModel}">
-            <views:EditView />
-        </DataTemplate>-->
-        
-    </Window.Resources>
     
     <!-- Main Grid -->
     <Grid>
@@ -147,16 +137,17 @@
             Grid.ColumnSpan="4">
 
             <!-- Add Character UserControl -->
-            <UserControl 
+            <Grid 
                 Visibility="{Binding Path=AddVMInstance,
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
                 ConverterParameter='AddVMInstance',
                 Mode=TwoWay, 
                 UpdateSourceTrigger=PropertyChanged}">
                 
-                <views:AddView />
+                <views:AddView 
+                    DataContext="{Binding AddVMInstance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 
-            </UserControl>
+            </Grid>
             <!-- This only works when the DataContext of the view is not set explicitly -->
             <!--<views:AddView
                 Visibility="{Binding AddVMInstance,
@@ -166,13 +157,16 @@
                 UpdateSourceTrigger=PropertyChanged}" />-->
 
             <!-- EditMode Grid -->
-            <views:EditView
-                Visibility="{Binding EditVMInstance, 
+            <UserControl 
+                Visibility="{Binding Path=EditVMInstance,
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
                 ConverterParameter='EditVMInstance',
                 Mode=TwoWay, 
-                UpdateSourceTrigger=PropertyChanged}" />
-                <!--DataContext="{Binding EditViewModel}"-->
+                UpdateSourceTrigger=PropertyChanged}">
+
+                <views:EditView />
+
+            </UserControl>
 
             <!-- OverviewMode Grid -->
             <!--<views:OverviewView
