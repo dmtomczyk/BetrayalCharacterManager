@@ -44,18 +44,33 @@ namespace BetrayalApp.ViewModels
         /// <summary>
         /// Increments appropriate values based on command parameter.
         /// </summary>
-        //public ICommand IncrementValueCommand() => new RelayCommand<string> ((string parameter) =>
-        //{
-        //    // Getting the operator & value to apply operator to from the command parameter
-        //    string operate = parameter.Substring(0, 1);
-        //    string value = parameter.Substring(1);
+        public ICommand IncrementValueCommand => new RelayCommand<string>((parameter) =>
+        {
+            // Getting the operator & value to apply operator to from the command parameter
+            string operate = parameter.Substring(0, 1);
+            string value = parameter.Substring(1);
 
-        //});
+            // Incrementing by one
+            if(operate == "+")
+            {
+                if (value == "knowledge")
+                    SelectedCharacter.Knowledge++;
+                if (value == "sanity")
+                if (value == "speed")
+                if (value == "might")
+            }
+            // Decrement
+            else
+            {
+
+            }
+
+        });
 
         /// <summary>
         /// Increments appropriate values based on command parameter.
         /// </summary>
-        public ICommand IncrementValueCommand() => new RelayCommand<string>((s) => IncrementValues(s));
+        //public ICommand IncrementValueCommand => new RelayCommand<string>((s) => IncrementValues(s));
 
         #endregion // End of Commands
 

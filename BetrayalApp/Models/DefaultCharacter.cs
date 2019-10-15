@@ -145,6 +145,11 @@ namespace BetrayalApp.Models
             }
         }
 
+        public int DefaultSpeedIndex { get; set; }
+        public int DefaultMightIndex { get; set; }
+        public int DefaultSanityIndex { get; set; }
+        public int DefaultKnowledgeIndex { get; set; }
+
         private List<int> _mightIncrements;
         /// <summary>
         /// Stores the valid increments for this characters might values.

@@ -92,6 +92,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 3,
                     DefaultSaniity = 3,
                     DefaultKnowledge = 4,
+                    DefaultSpeedIndex = ,
+                    DefaultMightIndex = ,
+                    DefaultSanityIndex = ,
+                    DefaultKnowledgeIndex = ,
                     SpeedIncrements = new List<int>
                     {
                         3, 4, 5, 6, 6, 6, 7, 7

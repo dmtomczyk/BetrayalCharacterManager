@@ -6,14 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:BetrayalApp.Views"
     mc:Ignorable="d" 
-    d:DesignHeight="650" d:DesignWidth="800"
-    DataContext="{Binding EditViewModel, Source={StaticResource ViewModelLocator}}">
+    d:DesignHeight="650" d:DesignWidth="800">
     <!-- NOTE: Setting this dataContext was conflicting with the VM and resulting in the NullToInverseConverter
         not being invoked correctly from MainWindow.xaml -->
     <!--DataContext="{Binding Source={x:Type local:EditView}}"-->
-
-    <!-- EditMode Grid -->
-    <!--Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+    <!--DataContext="{Binding EditViewModel, Source={StaticResource ViewModelLocator}}"-->
+    
     <Grid Background="WhiteSmoke">
         
         <Grid.RowDefinitions>
@@ -56,7 +54,6 @@
             VerticalAlignment="Center"
             FontWeight="Bold" />
         <TextBox
-            DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
             ToolTip="Enter your player's name (usually your actual name :)!"
             Grid.Row="1"
             Grid.Column="1"
@@ -65,6 +62,9 @@
             HorizontalContentAlignment="Center"
             VerticalAlignment="Center"
             Text="{Binding SelectedCharacter.Name, UpdateSourceTrigger=PropertyChanged}" />
+            <!--DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"-->
+            <!-- NOTE: If this window's datacontext wasn't matching the value's source 
+                it was binding to (aka SelectedCharacter is really set in MainViewModel), it must be set explicitly like this -->
 
         <!-- Base Character -->
         <TextBlock
@@ -75,7 +75,6 @@
             VerticalAlignment="Center"
             FontWeight="Bold" />
         <TextBlock
-            DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
             ToolTip="Enter your player's name (usually your actual name :)!"
             Grid.Row="2"
             Grid.Column="1"
@@ -93,7 +92,6 @@
             VerticalAlignment="Center"
             FontWeight="Bold" />
         <TextBlock
-            DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
             Grid.Row="3"
             Grid.Column="1"
             HorizontalAlignment="Stretch"

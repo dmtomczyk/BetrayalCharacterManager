@@ -164,7 +164,8 @@
                 Mode=TwoWay, 
                 UpdateSourceTrigger=PropertyChanged}">
 
-                <views:EditView />
+                <views:EditView 
+                    DataContext="{Binding EditVMInstance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             </UserControl>
 
