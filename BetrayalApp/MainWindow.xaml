@@ -116,6 +116,7 @@
                     VerticalAlignment="Center" />
                     <!--Click="ViewOverview_Click"-->
             </WrapPanel>
+            
         </StackPanel>
         
         <!-- Character Selection View -->
@@ -145,7 +146,7 @@
             Grid.Column="1"
             Grid.ColumnSpan="4">
 
-            <!-- Add Character Grid -->
+            <!-- Add Character UserControl -->
             <UserControl 
                 Visibility="{Binding Path=AddVMInstance,
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
@@ -174,13 +175,23 @@
                 <!--DataContext="{Binding EditViewModel}"-->
 
             <!-- OverviewMode Grid -->
-            <views:OverviewView
+            <!--<views:OverviewView
                 Visibility="{Binding OverviewVMInstance, 
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
                 ConverterParameter='OverviewVMInstance',
                 Mode=TwoWay, 
-                UpdateSourceTrigger=PropertyChanged}" />
+                UpdateSourceTrigger=PropertyChanged}" />-->
+            <UserControl 
+                Visibility="{Binding Path=OverviewVMInstance,
+                Converter={StaticResource NullToInverseVisibilityConverter}, 
+                ConverterParameter='OverviewVMInstance',
+                Mode=TwoWay, 
+                UpdateSourceTrigger=PropertyChanged}">
 
+                <views:OverviewView />
+
+            </UserControl>
+            
         </Grid>
         
     </Grid>

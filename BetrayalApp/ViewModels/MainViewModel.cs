@@ -18,9 +18,9 @@ namespace BetrayalApp.ViewModels
         public MainViewModel()
         {
             // Setting the default view to OverviewMode. Also explicitly confirming the other modes are false.
-            OverviewMode = false;
-            EditMode = false;
-            AddMode = false;
+            //OverviewMode = false;
+            //EditMode = false;
+            //AddMode = false;
 
             // Defaults
             AtLeastOneCharacter = false;
@@ -119,36 +119,6 @@ namespace BetrayalApp.ViewModels
             set => Set(ref _validValuesForCharacters, value);
         }
 
-        private bool _addMode;
-        /// <summary>
-        /// Stores whether or not AddMode is true;
-        /// </summary>
-        public bool AddMode
-        {
-            get => _addMode;
-            set => Set(ref _addMode, value);
-        }
-
-        private bool _editMode;
-        /// <summary>
-        /// Stores whether or not EditMode is true;
-        /// </summary>
-        public bool EditMode
-        {
-            get => _editMode;
-            set => Set(ref _editMode, value);
-        }
-
-        private bool _overviewMode;
-        /// <summary>
-        /// Stores whether or not OverviewMode is true;
-        /// </summary>
-        public bool OverviewMode
-        {
-            get => _overviewMode;
-            set => Set(ref _overviewMode, value);
-        }
-
         #endregion // End of Member Properties
 
         #region Commands
@@ -159,8 +129,8 @@ namespace BetrayalApp.ViewModels
         public ICommand ShowEditPlayerCommand => new RelayCommand(() =>
         {
             CleanUpViewModels();
+            EditVMInstance = new EditViewModel();
             ChangeMode("edit");
-            EditVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<EditViewModel>();
         });
 
         /// <summary>
@@ -179,8 +149,7 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         public ICommand EditCharacterCommand => new RelayCommand(() =>
         {
-            //CleanUpViewModels();
-            //ChangeMode("edit");
+            // TODO: 
         });
 
         /// <summary>
@@ -189,8 +158,8 @@ namespace BetrayalApp.ViewModels
         public ICommand ShowOverviewCommand => new RelayCommand(() =>
         {
             CleanUpViewModels();
+            OverviewVMInstance = new OverviewViewModel();
             ChangeMode("overview");
-            OverviewVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<OverviewViewModel>();
         });
 
         /// <summary>
@@ -277,10 +246,6 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void SetupAddMode()
         {
-            EditMode = false;
-            OverviewMode = false;
-            AddMode = true;
-
             AddVMInstance.NewCharacter = new PlayerCharacter();
             AddVMInstance.NewCharacter.CheckForValidValues();
         }
@@ -290,12 +255,8 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void SetupEditMode()
         {
-            OverviewMode = false;
-            AddMode = false;
-            EditMode = true;
-
             EditingCharacter = new PlayerCharacter();
-            EditingCharacter = SelectedCharacter;   // Pass by value or reference?
+            EditingCharacter = SelectedCharacter;
         }
 
         /// <summary>
@@ -303,9 +264,7 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void SetupOverviewMode()
         {
-            EditMode = false;
-            AddMode = false;
-            OverviewMode = true;
+            // TODO: 
         }
 
         /// <summary>
@@ -359,7 +318,9 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void RemovePlayer()
         {
-            AllCharacters.Remove(SelectedCharacter);
+            AllCharacters?.Remove(SelectedCharacter);
+            if (AllCharacters?.Count < 1)
+                AtLeastOneCharacter = false;
         }
 
         #endregion // End of Methods

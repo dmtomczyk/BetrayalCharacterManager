@@ -9,6 +9,7 @@
     xmlns:designData="clr-namespace:BetrayalApp.DesignData;assembly=BetrayalApp.DesignData"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800"
+    DataContext="{Binding OverviewViewModel, Source={StaticResource ViewModelLocator}}"
     d:DataContext="{d:DesignInstance designData:OverviewViewModel, IsDesignTimeCreatable=True}">
 
     <!-- Styles, etc. -->
@@ -49,44 +50,44 @@
 
         <!-- Player 1 Panel -->
         <StackPanel
-                Grid.Row="1"
-                Grid.Column="0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center">
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center">
 
             <!-- Name -->
             <TextBlock
-                    Style="{StaticResource PlayerNameStyle}"
-                    Background="{Binding AllCharacters[0].IsTraitor, Converter={StaticResource IsTraitorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Text="{Binding AllCharacters[0].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                Style="{StaticResource PlayerNameStyle}"
+                Background="{Binding AllCharacters[0].IsTraitor, Converter={StaticResource IsTraitorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding AllCharacters[0].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <!-- P1 Values (Speed) -->
             <WrapPanel
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Speed -->
                 <TextBlock
-                        Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                        Text="Speed: "/>
+                    Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Speed: "/>
                 <TextBlock
-                        Text="{Binding AllCharacters[0].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding AllCharacters[0].Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 
             <!-- P1 Values (Might) -->
             <WrapPanel
-                    HorizontalAlignment="Center"
-                    Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                HorizontalAlignment="Center"
+                Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
                 <!-- Might -->
                 <TextBlock
-                        Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
-                        Text="Might: "/>
+                    Visibility="{Binding AllCharacters[0], Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue='Collapsed'}"
+                    Text="Might: "/>
                 <TextBlock
-                        Text="{Binding AllCharacters[0].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding AllCharacters[0].Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </WrapPanel>
 

@@ -421,8 +421,11 @@ namespace BetrayalApp.ViewModels
             NewCharacter.Sanity = SelectedBaseCharacter.DefaultSpeed;
             NewCharacter.Knowledge = SelectedBaseCharacter.DefaultKnowledge;
 
+            NewCharacter.SelectedBaseCharacter = SelectedBaseCharacter;
+
             MVMInstance.AllCharacters.Add(NewCharacter);
             MVMInstance.AddVMInstance = null;
+            MVMInstance.AtLeastOneCharacter = true;
         }
 
     }

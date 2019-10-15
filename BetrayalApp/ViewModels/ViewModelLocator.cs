@@ -42,18 +42,19 @@ namespace BetrayalApp.ViewModels
 
         public MainViewModel MainViewModel
         {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
+            get => ServiceLocator.Current.GetInstance<MainViewModel>();
         }
-
         public AddViewModel AddViewModel
         {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<AddViewModel>();
-            }
+            get => ServiceLocator.Current.GetInstance<AddViewModel>();
+        }
+        public OverviewViewModel OverviewViewModel
+        {
+            get => ServiceLocator.Current.GetInstance<OverviewViewModel>();
+        }
+        public EditViewModel EditViewModel
+        {
+            get => ServiceLocator.Current.GetInstance<EditViewModel>();
         }
 
         public static void Cleanup()
