@@ -36,7 +36,7 @@
         <TextBlock
             FontWeight="UltraBold"
             FontSize="30"
-            Text="CREATE A NEW PLAYER!"
+            Text="ADD A NEW PLAYER!"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="4"
@@ -114,7 +114,7 @@
             VerticalAlignment="Center"
             HorizontalContentAlignment="Center"
             SelectedItem="{Binding NewCharacter.Might, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding NewCharacter.SelectedBaseCharacter.MightIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            ItemsSource="{Binding SelectedBaseCharacter.MightIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Player Knowledge -->
         <TextBlock
@@ -132,7 +132,7 @@
             VerticalAlignment="Center"
             HorizontalContentAlignment="Center"
             SelectedItem="{Binding NewCharacter.Knowledge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding NewCharacter.SelectedBaseCharacter.KnowledgeIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            ItemsSource="{Binding SelectedBaseCharacter.KnowledgeIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Player Sanity -->
         <TextBlock
@@ -151,7 +151,7 @@
             VerticalAlignment="Center"
             HorizontalContentAlignment="Center"
             SelectedItem="{Binding NewCharacter.Sanity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding NewCharacter.SelectedBaseCharacter.SanityIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            ItemsSource="{Binding SelectedBaseCharacter.SanityIncrements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Save Player Button -->
         <Button

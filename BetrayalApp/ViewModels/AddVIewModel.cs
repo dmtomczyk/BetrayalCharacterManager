@@ -1,6 +1,7 @@
 using BetrayalApp.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 
@@ -12,14 +13,73 @@ namespace BetrayalApp.ViewModels
     /// </summary>
     public class AddViewModel : ViewModelBase
     {
+        private MainViewModel MVMInstance = CommonServiceLocator.ServiceLocator.Current.GetInstance<MainViewModel>();
+
         /// <summary>
         /// Initializes a new instance of the EditViewModel class.
         /// <para>The ViewModels current properties get saved to the NewCharacters values when the user clicks <see cref="SavePlayerCommand"/></para>
         /// </summary>
         public AddViewModel()
         {
+            // Populating the possible list of characters the user can choose from.
+            AllBaseCharacters = PopulateBaseCharacters();
+            NewCharacter = new PlayerCharacter();
+        }
+
+        #region Member Properties
+
+        private DefaultCharacter _selectedBaseCharacter;
+        /// <summary>
+        /// Stores currently selected base character.
+        /// </summary>
+        public DefaultCharacter SelectedBaseCharacter
+        {
+            get => _selectedBaseCharacter;
+            set => Set(ref _selectedBaseCharacter, value);
+        }
+
+        private List<DefaultCharacter> _allBaseCharacters;
+        /// <summary>
+        /// Stores all base characters.
+        /// </summary>
+        public List<DefaultCharacter> AllBaseCharacters
+        {
+            get => _allBaseCharacters;
+            set => Set(ref _allBaseCharacters, value);
+        }
+
+        private PlayerCharacter _newCharacter;
+        /// <summary>
+        /// Stores the currently selected character within the ListBox.
+        /// </summary>
+        public PlayerCharacter NewCharacter
+        {
+            get => _newCharacter;
+            set => Set(ref _newCharacter, value);
+        }
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// This command calls the <see cref="SaveNewPlayer"/> Method to save new information.
+        /// </summary>
+        public ICommand SavePlayerCommand => new RelayCommand(() =>
+        {
+            SaveNewPlayer();
+        });
+
+        #endregion // End of Commands
+
+        /// <summary>
+        /// This method is responsible for returning a list of all BaseCharacters (Chars that came with the game)
+        /// </summary>
+        /// <returns></returns>
+        private List<DefaultCharacter> PopulateBaseCharacters()
+        {
             // Populating list of default characters for player to choose from.
-            AllBaseCharacters = new List<DefaultCharacter>
+            var allBaseChars = new List<DefaultCharacter>
             {
 
                 // Missy Dubourde
@@ -254,7 +314,7 @@ namespace BetrayalApp.ViewModels
                     },
                     MightIncrements = new List<int>
                     {
-                        2, 3, 3, 4, 5, 5 6, 8
+                        2, 3, 3, 4, 5, 5, 6, 8
                     },
                     SanityIncrements = new List<int>
                     {
@@ -347,52 +407,24 @@ namespace BetrayalApp.ViewModels
                     }
                 }
             };
+
+            return allBaseChars;
         }
 
-        #region Member Properties
-
-        private DefaultCharacter _selectedBaseCharacter;
         /// <summary>
-        /// Stores currently selected base character.
+        /// This method adds the <see cref="NewCharacter"/> to <see cref="MainViewModel.AllCharacters"/>'s list of AllCharacters.
         /// </summary>
-        public DefaultCharacter SelectedBaseCharacter
+        private void SaveNewPlayer()
         {
-            get => _selectedBaseCharacter;
-            set => Set(ref _selectedBaseCharacter, value);
+            NewCharacter.Speed = SelectedBaseCharacter.DefaultSpeed;
+            NewCharacter.Might = SelectedBaseCharacter.DefaultMight;
+            NewCharacter.Sanity = SelectedBaseCharacter.DefaultSpeed;
+            NewCharacter.Knowledge = SelectedBaseCharacter.DefaultKnowledge;
+
+            MVMInstance.AllCharacters.Add(NewCharacter);
+            MVMInstance.AddVMInstance = null;
         }
 
-        private List<DefaultCharacter> _allBaseCharacters;
-        /// <summary>
-        /// Stores all base characters.
-        /// </summary>
-        public List<DefaultCharacter> AllBaseCharacters
-        {
-            get => _allBaseCharacters;
-            set => Set(ref _allBaseCharacters, value);
-        }
-
-        private PlayerCharacter _newCharacter;
-        /// <summary>
-        /// Stores the currently selected character within the ListBox.
-        /// </summary>
-        public PlayerCharacter NewCharacter
-        {
-            get => _newCharacter;
-            set => Set(ref _newCharacter, value);
-        }
-
-        #endregion // End of Member Properties 
-
-        #region Commands
-
-        /// <summary>
-        /// This command calls the SavePlayer Method to save new information.
-        /// </summary>
-        public ICommand SavePlayerCommand => new RelayCommand(() =>
-        {
-
-        });
-
-        #endregion // End of Commands
     }
+
 }
