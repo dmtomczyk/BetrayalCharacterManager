@@ -76,6 +76,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\PlayerValueMaxMinConverter.cs" />
+    <Compile Include="Converters\DummyConverter.cs" />
     <Compile Include="Models\DefaultCharacter.cs" />
     <Compile Include="Models\PlayerCharacter.cs" />
     <Compile Include="Utilities\WPFUtilities.cs" />

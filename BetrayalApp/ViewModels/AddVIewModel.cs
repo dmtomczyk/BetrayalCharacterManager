@@ -92,10 +92,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 3,
                     DefaultSaniity = 3,
                     DefaultKnowledge = 4,
-                    DefaultSpeedIndex = ,
-                    DefaultMightIndex = ,
-                    DefaultSanityIndex = ,
-                    DefaultKnowledgeIndex = ,
+                    DefaultSpeedIndex = 3,
+                    DefaultMightIndex = 4,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 4,
                     SpeedIncrements = new List<int>
                     {
                         3, 4, 5, 6, 6, 6, 7, 7
@@ -123,6 +123,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 3,
                     DefaultSaniity = 5,
                     DefaultKnowledge = 3,
+                    DefaultSpeedIndex = 4,
+                    DefaultMightIndex = 4,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 3,
                     SpeedIncrements = new List<int>
                     {
                         4, 4, 4, 4, 5, 6, 8, 8
@@ -150,6 +154,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 3,
                     DefaultSaniity = 3,
                     DefaultKnowledge = 5,
+                    DefaultSpeedIndex = 3,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 5,
                     SpeedIncrements = new List<int>
                     {
                         3, 3, 4, 5, 6, 6, 7, 8
@@ -177,6 +185,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 4,
                     DefaultSaniity = 4,
                     DefaultKnowledge = 3,
+                    DefaultSpeedIndex = 4,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 5,
+                    DefaultKnowledgeIndex = 3,
                     SpeedIncrements = new List<int>
                     {
                         2, 3, 4, 4, 4, 5, 6, 8
@@ -204,6 +216,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 2,
                     DefaultSaniity = 4,
                     DefaultKnowledge = 5,
+                    DefaultSpeedIndex = 4,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 4,
                     SpeedIncrements = new List<int>
                     {
                         3, 4, 4, 4, 4, 6, 7, 8
@@ -231,6 +247,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 4,
                     DefaultSaniity = 4,
                     DefaultKnowledge = 4,
+                    DefaultSpeedIndex = 3,
+                    DefaultMightIndex = 4,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 4,
                     SpeedIncrements = new List<int>
                     {
                         2, 3, 3, 5, 5, 6, 6, 7
@@ -258,6 +278,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 3,
                     DefaultSaniity = 3,
                     DefaultKnowledge = 3,
+                    DefaultSpeedIndex = 5,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 3,
                     SpeedIncrements = new List<int>
                     {
                         4, 4, 4, 5, 6, 7, 7, 8
@@ -285,6 +309,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 5,
                     DefaultSaniity = 3,
                     DefaultKnowledge = 3,
+                    DefaultSpeedIndex = 5,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 3,
                     SpeedIncrements = new List<int>
                     {
                         2, 2, 2, 3, 4, 5, 5, 6
@@ -312,6 +340,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 3,
                     DefaultSaniity = 4,
                     DefaultKnowledge = 4,
+                    DefaultSpeedIndex = 4,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 4,
+                    DefaultKnowledgeIndex = 3,
                     SpeedIncrements = new List<int>
                     {
                         3, 3, 3, 4, 6, 6, 7, 7
@@ -339,6 +371,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 4,
                     DefaultSaniity = 4,
                     DefaultKnowledge = 3,
+                    DefaultSpeedIndex = 3,
+                    DefaultMightIndex = 4,
+                    DefaultSanityIndex = 4,
+                    DefaultKnowledgeIndex = 3,
                     SpeedIncrements = new List<int>
                     {
                         3, 4, 4, 4, 5, 6, 7, 8
@@ -366,6 +402,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 2,
                     DefaultSaniity = 6,
                     DefaultKnowledge = 4,
+                    DefaultSpeedIndex = 3,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 5,
+                    DefaultKnowledgeIndex = 4,
                     SpeedIncrements = new List<int>
                     {
                         2, 3, 3, 4, 5, 6, 7, 7
@@ -393,6 +433,10 @@ namespace BetrayalApp.ViewModels
                     DefaultMight = 3,
                     DefaultSaniity = 3,
                     DefaultKnowledge = 5,
+                    DefaultSpeedIndex = 4,
+                    DefaultMightIndex = 3,
+                    DefaultSanityIndex = 3,
+                    DefaultKnowledgeIndex = 5,
                     SpeedIncrements = new List<int>
                     {
                         2, 2, 4, 4, 5, 5, 6, 6
@@ -425,6 +469,12 @@ namespace BetrayalApp.ViewModels
             NewCharacter.Might = SelectedBaseCharacter.DefaultMight;
             NewCharacter.Sanity = SelectedBaseCharacter.DefaultSpeed;
             NewCharacter.Knowledge = SelectedBaseCharacter.DefaultKnowledge;
+
+            // Setting Default Indexes
+            NewCharacter.CurrentSpeedIndex = SelectedBaseCharacter.DefaultSpeedIndex;
+            NewCharacter.CurrentMightIndex = SelectedBaseCharacter.DefaultMightIndex;
+            NewCharacter.CurrentSanityIndex = SelectedBaseCharacter.DefaultSanityIndex;
+            NewCharacter.CurrentKnowledgeIndex = SelectedBaseCharacter.DefaultKnowledgeIndex;
 
             // Setting this property in case we decide to use the Base Characters stats in the future
             NewCharacter.SelectedBaseCharacter = SelectedBaseCharacter;

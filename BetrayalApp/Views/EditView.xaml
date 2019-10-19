@@ -94,10 +94,31 @@
         <TextBlock
             Grid.Row="3"
             Grid.Column="1"
+            Foreground="{Binding SelectedCharacter.CurrentSpeedIndex, Converter={StaticResource PlayerValueMaxMinConverter}, UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             Text="{Binding SelectedCharacter.Speed, UpdateSourceTrigger=PropertyChanged}"/>
-
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="^"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="+speed"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="2" 
+            Content="v"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="-speed"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"/>
+        
         <!-- Player Might -->
         <TextBlock
             Text="Player Might:"
@@ -107,12 +128,33 @@
             VerticalAlignment="Center"
             FontWeight="Bold" />
         <TextBlock
+            Foreground="{Binding SelectedCharacter.CurrentMightIndex, Converter={StaticResource PlayerValueMaxMinConverter}, UpdateSourceTrigger=PropertyChanged}"
             ToolTip="Select your players current (usually base) value!"
             Grid.Row="4"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            Text="{Binding SelectedCharacter.Might}"/>
+            Text="{Binding SelectedCharacter.Might, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="^"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="+might"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="2" 
+            Content="v"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="-might"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"/>
 
         <!-- Player Sanity -->
         <TextBlock
@@ -124,12 +166,33 @@
             FontWeight="Bold" />
         <TextBlock
             ToolTip="Select your players current (usually base) value!"
+            Foreground="{Binding SelectedCharacter.CurrentSanityIndex, Converter={StaticResource PlayerValueMaxMinConverter}, UpdateSourceTrigger=PropertyChanged}"
             Grid.Row="5"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            Text="{Binding SelectedCharacter.Knowledge, UpdateSourceTrigger=PropertyChanged}"/>
-
+            Text="{Binding Path=SelectedCharacter.Sanity, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button
+            Grid.Row="5"
+            Grid.Column="2"
+            Content="^"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="+sanity"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="2" 
+            Content="v"
+            Command="{Binding IncrementValueCommand}"
+            CommandParameter="-sanity"
+            Height="20"
+            Margin="1 1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"/>
+        
         <!-- Player Knowledge -->
         <TextBlock
             Text="Player Knowledge:"
@@ -140,6 +203,7 @@
             FontWeight="Bold" />
         <TextBlock
             ToolTip="Select your players current (usually base) value!"
+            Foreground="{Binding SelectedCharacter.CurrentKnowledgeIndex, Converter={StaticResource PlayerValueMaxMinConverter}, UpdateSourceTrigger=PropertyChanged}"
             Grid.Row="6"
             Grid.Column="1"
             HorizontalAlignment="Stretch"

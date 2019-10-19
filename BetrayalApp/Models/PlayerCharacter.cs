@@ -20,7 +20,7 @@ namespace BetrayalApp.Models
         /// </summary>
         public PlayerCharacter()
         {
-            
+
         }
 
         #region INotifyPropertyChanged Implementation
@@ -91,6 +91,90 @@ namespace BetrayalApp.Models
                     this._name = value;
                     NotifyPropertyChanged();
                     CheckForValidValues();
+                }
+            }
+        }
+
+        private int _currentMightIndex;
+        /// <summary>
+        /// Stores the characters might index,
+        /// </summary>
+        public int CurrentMightIndex
+        {
+            get
+            {
+                //CheckForValidValues();
+                return _currentMightIndex;
+            }
+            set
+            {
+                if (value != _currentMightIndex)
+                {
+                    this._currentMightIndex = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private int _currentSpeedIndex;
+        /// <summary>
+        /// Stores the characters dpeed index.
+        /// </summary>
+        public int CurrentSpeedIndex
+        {
+            get
+            {
+                //CheckForValidValues();
+                return _currentSpeedIndex;
+            }
+            set
+            {
+                if (value != _currentSpeedIndex)
+                {
+                    this._currentSpeedIndex = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private int _currentSanityIndex;
+        /// <summary>
+        /// Stores the characters sanity index.
+        /// </summary>
+        public int CurrentSanityIndex
+        {
+            get
+            {
+                //CheckForValidValues();
+                return _currentSanityIndex;
+            }
+            set
+            {
+                if (value != _currentSanityIndex)
+                {
+                    this._currentSanityIndex = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private int _currentKnowledgeIndex;
+        /// <summary>
+        /// Stores the characters knowledge index.
+        /// </summary>
+        public int CurrentKnowledgeIndex
+        {
+            get
+            {
+                //CheckForValidValues();
+                return _currentKnowledgeIndex;
+            }
+            set
+            {
+                if (value != _currentKnowledgeIndex)
+                {
+                    this._currentKnowledgeIndex = value;
+                    NotifyPropertyChanged();
                 }
             }
         }

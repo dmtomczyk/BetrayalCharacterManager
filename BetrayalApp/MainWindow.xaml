@@ -157,17 +157,21 @@
                 UpdateSourceTrigger=PropertyChanged}" />-->
 
             <!-- EditMode Grid -->
-            <UserControl 
+            <!--<UserControl 
                 Visibility="{Binding Path=EditVMInstance,
                 Converter={StaticResource NullToInverseVisibilityConverter}, 
                 ConverterParameter='EditVMInstance',
                 Mode=TwoWay, 
-                UpdateSourceTrigger=PropertyChanged}">
+                UpdateSourceTrigger=PropertyChanged}">-->
 
+            <Grid
+                Visibility="{Binding EditVMInstance, Converter={StaticResource NullToInverseVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                
                 <views:EditView 
                     DataContext="{Binding EditVMInstance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
 
-            </UserControl>
+            <!--</UserControl>-->
 
             <!-- OverviewMode Grid -->
             <!--<views:OverviewView

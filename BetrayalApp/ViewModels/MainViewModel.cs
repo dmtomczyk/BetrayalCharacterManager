@@ -258,8 +258,8 @@ namespace BetrayalApp.ViewModels
         /// </summary>
         private void SetupEditMode()
         {
-            EditVMInstance.SelectedCharacter = new PlayerCharacter();
-            EditVMInstance.SelectedCharacter = SelectedCharacter;
+            //EditVMInstance.SelectedCharacter = new PlayerCharacter();
+            //EditVMInstance.SelectedCharacter = SelectedCharacter;
         }
 
         /// <summary>

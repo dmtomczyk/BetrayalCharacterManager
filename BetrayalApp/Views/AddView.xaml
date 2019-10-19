@@ -78,7 +78,7 @@
             HorizontalContentAlignment="Center"
             DisplayMemberPath="DefaultName"
             SelectedItem="{Binding SelectedBaseCharacter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ItemsSource="{Binding AllBaseCharacters}"/>
+            ItemsSource="{Binding AllBaseCharacters}" />
 
         <!-- Custom Player Stats -->
         <Grid Visibility="Collapsed">

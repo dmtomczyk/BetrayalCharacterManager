@@ -23,9 +23,9 @@ namespace BetrayalApp.Views
         public EditView()
         {
             //DataContext = this;
-            this.DataContext = this;
+            //this.DataContext = this;
             InitializeComponent();
-            Dispatcher.ShutdownStarted += OnDispatcherShutDownStarted;
+            //Dispatcher.ShutdownStarted += OnDispatcherShutDownStarted;
         }
 
         /// <summary>
@@ -33,15 +33,15 @@ namespace BetrayalApp.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnDispatcherShutDownStarted(object sender, EventArgs e)
-        {
-            var Disposable = DataContext as IDisposable;
+        //private void OnDispatcherShutDownStarted(object sender, EventArgs e)
+        //{
+        //    var Disposable = DataContext as IDisposable;
 
-            if (!(Disposable is null))
-            {
-                Disposable.Dispose();
-            }
-        }
+        //    if (!(Disposable is null))
+        //    {
+        //        Disposable.Dispose();
+        //    }
+        //}
 
     }
 
